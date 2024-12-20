@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:13:55 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/20 16:14:28 by aboumall         ###   ########.fr       */
+/*   Updated: 2024/12/20 16:38:11 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define MAIN_H
 
 # include <stdio.h>
+# include <stdlib.h>
 
 typedef struct s_stack
 {
@@ -35,5 +36,11 @@ void	swap_stack(t_stack *stack);
 
 void	stack_push(t_stack *stack, int value);
 void	stack_push_to(t_stack *stack_from, t_stack *stack_to);
+
+void	stack_rotate(t_stack *stack);
+void	stack_reverse_rotate(t_stack *stack);
+
+void    sort_two(t_stack *stack);
+void    sort_three(t_stack *stack);
 
 #endif

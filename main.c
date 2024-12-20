@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_swap.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 16:14:49 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/20 16:43:19 by aboumall         ###   ########.fr       */
+/*   Created: 2024/12/20 16:34:53 by aboumall          #+#    #+#             */
+/*   Updated: 2024/12/20 16:41:31 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-void	swap_stack(t_stack *stack)
+int main(void)
 {
-	int tmp;
-	if (stack->top < 1)
-		return ;
-	tmp = stack->data[stack->top];
-	stack->data[stack->top] = stack->data[stack->top - 1];
-	stack->data[stack->top - 1] = tmp;
+    t_stack *stack = stack_create(3);
+    stack_push(stack, 3);
+    stack_push(stack, 2);
+    stack_push(stack, 1);
+
+    stack_print(stack);
+    printf("sorting tab\n");
+    sort_three(stack);
+    stack_print(stack);
+    
 }
