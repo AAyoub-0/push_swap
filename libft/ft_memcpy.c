@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_small.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 16:17:33 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/20 16:34:13 by aboumall         ###   ########.fr       */
+/*   Created: 2024/11/05 15:08:31 by aboumall          #+#    #+#             */
+/*   Updated: 2024/11/25 20:07:06 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-void    sort_two(t_stack *stack)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-    if (stack->data[0] > stack->data[1])
-        swap_stack(stack);
-}
+	size_t			i;
+	unsigned char	*c_dest;
+	unsigned char	*c_src;
 
-void    sort_three(t_stack *stack)
-{
-    if (stack->data[0] > stack->data[1] && stack->data[1] > stack->data[2])
-    {
-        swap_stack(stack);
-        stack_rotate(stack);
-    }
+	i = 0;
+	c_dest = (unsigned char *)dest;
+	c_src = (unsigned char *)src;
+	while (i < n)
+	{
+		c_dest[i] = c_src[i];
+		i++;
+	}
+	return (dest);
 }

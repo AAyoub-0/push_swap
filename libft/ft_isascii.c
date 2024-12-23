@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_swap.c                                       :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 16:14:49 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/20 16:43:19 by aboumall         ###   ########.fr       */
+/*   Created: 2024/11/04 16:39:01 by aboumall          #+#    #+#             */
+/*   Updated: 2024/11/08 12:55:30 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
-
-void	swap_stack(t_stack *stack)
+int	ft_isascii(int c)
 {
-	int tmp;
-	if (stack->top < 1)
-		return ;
-	tmp = stack->data[stack->top];
-	stack->data[stack->top] = stack->data[stack->top - 1];
-	stack->data[stack->top - 1] = tmp;
+	return (c >= 0 && c <= 127);
 }

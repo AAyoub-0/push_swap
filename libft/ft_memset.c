@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 16:34:53 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/23 16:29:18 by aayoub           ###   ########.fr       */
+/*   Created: 2024/11/04 15:12:55 by aboumall          #+#    #+#             */
+/*   Updated: 2024/11/22 21:33:00 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-int main(void)
+void	*ft_memset(void *s, int c, size_t n)
 {
-    t_stack *stack = stack_create(3, 'a');
-    stack_push(stack, 3);
-    stack_push(stack, 2);
-    stack_push(stack, 1);
+	size_t			i;
+	unsigned char	*tab;
 
-    stack_print(stack);
-    printf("sorting tab\n");
-    sort_three(stack);
-    stack_print(stack);
+	i = 0;
+	tab = (unsigned char *)s;
+	while (i < n)
+	{
+		tab[i] = (unsigned char)c;
+		i++;
+	}
+	return (s);
 }

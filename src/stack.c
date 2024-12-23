@@ -3,21 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:55 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/20 16:14:56 by aboumall         ###   ########.fr       */
+/*   Updated: 2024/12/23 17:44:50 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "../main.h"
 
-t_stack	*stack_create(int size)
+t_stack	*stack_create(int size, char name)
 {
 	t_stack	*stack;
 
 	stack = malloc(sizeof(t_stack));
 	stack->data = malloc(size * sizeof(int));
+	stack->name = ft_calloc(2, sizeof(char));
+	stack->name[0] = name;
 	stack->top = -1;
 	stack->size = size;
 	return (stack);

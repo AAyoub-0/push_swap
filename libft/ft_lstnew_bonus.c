@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 16:34:53 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/23 16:29:18 by aayoub           ###   ########.fr       */
+/*   Created: 2024/11/18 13:16:54 by aboumall          #+#    #+#             */
+/*   Updated: 2024/11/22 21:32:22 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-int main(void)
+t_list	*ft_lstnew(void *content)
 {
-    t_stack *stack = stack_create(3, 'a');
-    stack_push(stack, 3);
-    stack_push(stack, 2);
-    stack_push(stack, 1);
+	t_list	*lst;
 
-    stack_print(stack);
-    printf("sorting tab\n");
-    sort_three(stack);
-    stack_print(stack);
+	lst = malloc(sizeof(t_list));
+	if (!lst)
+		return (NULL);
+	lst->content = content;
+	lst->next = NULL;
+	return (lst);
 }

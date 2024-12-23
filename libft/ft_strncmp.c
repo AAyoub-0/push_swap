@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 16:34:53 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/23 16:29:18 by aayoub           ###   ########.fr       */
+/*   Created: 2024/11/06 14:45:56 by aboumall          #+#    #+#             */
+/*   Updated: 2024/11/22 22:16:31 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-int main(void)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-    t_stack *stack = stack_create(3, 'a');
-    stack_push(stack, 3);
-    stack_push(stack, 2);
-    stack_push(stack, 1);
+	size_t	i;
 
-    stack_print(stack);
-    printf("sorting tab\n");
-    sort_three(stack);
-    stack_print(stack);
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (((unsigned char)s1[i] == (unsigned char)s2[i]) && (s1[i] && s2[i])
+		&& (i < n - 1))
+		i++;
+	return (((unsigned char)s1[i] - (unsigned char)s2[i]));
 }

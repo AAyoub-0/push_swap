@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 16:34:53 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/23 16:29:18 by aayoub           ###   ########.fr       */
+/*   Created: 2024/11/05 15:02:21 by aboumall          #+#    #+#             */
+/*   Updated: 2024/11/22 20:53:33 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-int main(void)
+void	ft_bzero(void *s, size_t n)
 {
-    t_stack *stack = stack_create(3, 'a');
-    stack_push(stack, 3);
-    stack_push(stack, 2);
-    stack_push(stack, 1);
+	unsigned char	*tab;
 
-    stack_print(stack);
-    printf("sorting tab\n");
-    sort_three(stack);
-    stack_print(stack);
+	tab = (unsigned char *)s;
+	tab = ft_memset(tab, 0, n);
 }

@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 16:34:53 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/23 16:29:18 by aayoub           ###   ########.fr       */
+/*   Created: 2024/11/04 16:45:15 by aboumall          #+#    #+#             */
+/*   Updated: 2024/11/22 21:49:46 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "libft.h"
 
-int main(void)
+size_t	ft_strlen(const char *tab)
 {
-    t_stack *stack = stack_create(3, 'a');
-    stack_push(stack, 3);
-    stack_push(stack, 2);
-    stack_push(stack, 1);
+	size_t	size;
 
-    stack_print(stack);
-    printf("sorting tab\n");
-    sort_three(stack);
-    stack_print(stack);
+	size = 0;
+	while (tab[size])
+		size++;
+	return (size);
 }

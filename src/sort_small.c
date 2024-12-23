@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   sort_small.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/20 16:34:53 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/23 16:29:18 by aayoub           ###   ########.fr       */
+/*   Created: 2024/12/20 16:17:33 by aboumall          #+#    #+#             */
+/*   Updated: 2024/12/23 17:44:30 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "../main.h"
 
-int main(void)
+void    sort_two(t_stack *stack)
 {
-    t_stack *stack = stack_create(3, 'a');
-    stack_push(stack, 3);
-    stack_push(stack, 2);
-    stack_push(stack, 1);
+    if (stack->data[0] > stack->data[1])
+        stack_swap(stack, 1);
+}
 
-    stack_print(stack);
-    printf("sorting tab\n");
-    sort_three(stack);
-    stack_print(stack);
+void    sort_three(t_stack *stack)
+{
+    if (stack->data[0] > stack->data[1] && stack->data[1] > stack->data[2])
+    {
+        stack_swap(stack, 1);
+        stack_rotate(stack, 1);
+    }
 }

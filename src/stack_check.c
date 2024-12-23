@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_cheks.c                                      :+:      :+:    :+:   */
+/*   stack_check.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:41 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/20 16:14:43 by aboumall         ###   ########.fr       */
+/*   Updated: 2024/12/23 17:44:35 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "../main.h"
 
 void	stack_str_check_digits(char *str)
 {
@@ -53,22 +53,6 @@ void	stack_str_check_duplicates(char *str)
 		}
 		i++;
 	}
-}
-
-int	ft_strncmp(char *s1, char *s2, int n)
-{
-	int	i;
-
-	i = 0;
-	while (i < n)
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		if (s1[i] == '\0')
-			return (0);
-		i++;
-	}
-	return (0);
 }
 
 void	stack_str_check_int_overflow(char *str)

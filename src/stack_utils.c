@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:51 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/20 16:14:53 by aboumall         ###   ########.fr       */
+/*   Updated: 2024/12/23 17:44:47 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "../main.h"
 
 void	stack_print(t_stack *stack)
 {
@@ -33,7 +33,7 @@ void	stack_print(t_stack *stack)
 	printf(" }\n");
 }
 
-t_stack	*stack_create_from_str(char *str)
+t_stack	*stack_create_from_str(char *str, char name)
 {
 	int		i;
 	int		sign;
@@ -41,7 +41,7 @@ t_stack	*stack_create_from_str(char *str)
 
 	i = 0;
 	sign = 1;
-	stack = stack_create(stack_str_size(str));
+	stack = stack_create(stack_str_size(str), name);
 	while (str[i])
 	{
 		if (str[i] == '-')

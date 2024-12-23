@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_rotate.c                                      :+:      :+:    :+:   */
+/*   stack_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:58 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/20 16:15:28 by aboumall         ###   ########.fr       */
+/*   Updated: 2024/12/23 17:44:40 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "main.h"
+#include "../main.h"
 
-void	stack_rotate(t_stack *stack)
+void	stack_rotate(t_stack *stack, t_bool print)
 {
 	int	tmp;
 	int	i;
@@ -27,9 +27,11 @@ void	stack_rotate(t_stack *stack)
 		i++;
 	}
 	stack->data[stack->top] = tmp;
+	if (print)
+		printf("r%c\n", stack->name[0]);
 }
 
-void	stack_reverse_rotate(t_stack *stack)
+void	stack_reverse_rotate(t_stack *stack, t_bool print)
 {
 	int tmp;
 	int i;
@@ -44,4 +46,22 @@ void	stack_reverse_rotate(t_stack *stack)
 		i--;
 	}
 	stack->data[0] = tmp;
+	if (print)
+		printf("rr%c\n", stack->name[0]);
+}
+
+void	stack_rotate_both(t_stack *stack_a, t_stack *stack_b, t_bool print)
+{
+	stack_rotate(stack_a, 0);
+	stack_rotate(stack_b, 0);
+	if (print)
+		printf("rr\n");
+}
+
+void	stack_reverse_rotate_both(t_stack *stack_a, t_stack *stack_b, t_bool print)
+{
+	stack_reverse_rotate(stack_a, 0);
+	stack_reverse_rotate(stack_b, 0);
+	if (print)
+		printf("rrr\n");
 }
