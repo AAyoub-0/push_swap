@@ -14,17 +14,3 @@ build/
 .idea/
 *.swp
 *~
-
-# Logs et autres fichiers temporaires
-*.log
-*.tmp
-*.bak
-*.dSYM/
-
-# Résultats des tests
-*.gcda
-*.gcno
-*.gcov
-
-# Fichiers de configuration locaux
-config.h
