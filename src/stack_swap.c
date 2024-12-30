@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:49 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/23 17:44:43 by aayoub           ###   ########.fr       */
+/*   Updated: 2024/12/30 03:19:34 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	stack_swap(t_stack *stack, t_bool print)
 	int tmp;
 	if (stack->top < 1)
 		return ;
-	tmp = stack->data[stack->top];
-	stack->data[stack->top] = stack->data[stack->top - 1];
-	stack->data[stack->top - 1] = tmp;
+	tmp = stack->data[0];
+	stack->data[0] = stack->data[1];
+	stack->data[1] = tmp;
 	if (print)
 		printf("s%c\n", stack->name[0]);
 }

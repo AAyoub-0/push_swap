@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:55 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/23 17:44:50 by aayoub           ###   ########.fr       */
+/*   Updated: 2024/12/30 03:11:14 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,6 @@ void	stack_delete(t_stack *stack, int index)
 void	stack_destroy(t_stack *stack)
 {
 	free(stack->data);
+	free(stack->name);
 	free(stack);
 }
