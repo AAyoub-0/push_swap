@@ -14,3 +14,5 @@ build/
 .idea/
 *.swp
 *~
+
+push_swap
