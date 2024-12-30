@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 17:45:38 by aayoub            #+#    #+#             */
-/*   Updated: 2024/12/30 02:50:44 by aayoub           ###   ########.fr       */
+/*   Updated: 2024/12/30 17:17:35 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_bool  is_sorted(t_stack *stack)
     int i;
 
     i = 0;
-    while (i < stack->size - 1)
+    while (i < stack->top)
     {
         if (stack->data[i] > stack->data[i + 1])
             return (FALSE);
@@ -31,7 +31,7 @@ t_bool  is_sorted_desc(t_stack *stack)
     int i;
 
     i = 0;
-    while (i < stack->size - 1)
+    while (i < stack->top)
     {
         if (stack->data[i] < stack->data[i + 1])
             return (FALSE);

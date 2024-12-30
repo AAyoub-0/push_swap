@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:17:33 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/30 04:35:32 by aayoub           ###   ########.fr       */
+/*   Updated: 2024/12/30 17:19:15 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void    sort_three(t_stack *stack)
         stack_rotate(stack, 1);
     else if (stack->data[0] < stack->data[1] && stack->data[0] > stack->data[2])
         stack_reverse_rotate(stack, 1);
-    else if (stack->data[0] < stack->data[1] && stack->data[0] < stack->data[2])
+    else if (stack->data[0] < stack->data[1] && stack->data[1] > stack->data[2])
     {
         stack_reverse_rotate(stack, 1);
         stack_swap(stack, 1);
