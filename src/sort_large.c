@@ -6,23 +6,11 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 17:54:16 by aayoub            #+#    #+#             */
-/*   Updated: 2024/12/24 18:41:09 by aayoub           ###   ########.fr       */
+/*   Updated: 2024/12/30 17:59:46 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
-
-void   merge_sort(t_stack *stack_a, t_stack *stack_b, int start, int end)
-{
-    int mid;
-
-    if (start >= end)
-        return ;
-    mid = (start + end) / 2;
-    merge_sort(stack_a, stack_b, start, mid);
-    merge_sort(stack_a, stack_b, mid + 1, end);
-    split_stack(stack_a, stack_b, start, end); 
-}
 
 void    split_stack(t_stack *stack_a, t_stack *stack_b, int start, int end)
 {
@@ -52,4 +40,16 @@ void    split_stack(t_stack *stack_a, t_stack *stack_b, int start, int end)
         stack_a->data[i] = stack_b->data[i];
         i++;
     }
+}
+
+void   merge_sort(t_stack *stack_a, t_stack *stack_b, int start, int end)
+{
+    int mid;
+
+    if (start >= end)
+        return ;
+    mid = (start + end) / 2;
+    merge_sort(stack_a, stack_b, start, mid);
+    merge_sort(stack_a, stack_b, mid + 1, end);
+    split_stack(stack_a, stack_b, start, end);
 }

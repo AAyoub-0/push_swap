@@ -6,11 +6,27 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 03:37:11 by aayoub            #+#    #+#             */
-/*   Updated: 2024/12/30 17:18:08 by aayoub           ###   ########.fr       */
+/*   Updated: 2024/12/30 18:05:17 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
+# include <time.h>
+
+int generate_number_in_range(int min, int max) {
+    static unsigned long seed = 0;
+    if (seed == 0) {
+        // Initialisation avec le temps actuel en secondes
+        seed = (unsigned long)time(NULL);
+    }
+
+    // Linear Congruential Generator (LCG) - Simple générateur pseudo-aléatoire
+    seed = (seed * 1103515245 + 12345) & 0x7fffffff;
+
+    // Calculer un nombre dans la plage [min, max]
+    int range = max - min + 1;
+    return min + (seed % range);
+}
 
 void    sort_test(char *test, int size, int *array)
 {
@@ -23,8 +39,10 @@ void    sort_test(char *test, int size, int *array)
         sort_three(stack_a);
     else if (size == 4)
         sort_four(stack_a, stack_b);
-    else
+    else if (size == 5)
         sort_five(stack_a, stack_b);
+    else
+        merge_sort(stack_a, stack_b, 0, stack_a->size - 1);
     stack_print(stack_a);
     if  (is_sorted(stack_a))
         printf("\033[0;32m%s OK\033[0m\n", test);
@@ -78,8 +96,7 @@ void    size_4_test()
 
 void    size_5_test()
 {
- printf("SIZE OF FIVE\n");
-
+    printf("SIZE OF FIVE\n");
     sort_test("TEST 1", 5, (int[]){1, 2, 3, 4, 5});
     sort_test("TEST 2", 5, (int[]){1, 2, 3, 5, 4});
     sort_test("TEST 3", 5, (int[]){1, 2, 4, 3, 5});
@@ -200,5 +217,15 @@ void    size_5_test()
     sort_test("TEST 118", 5, (int[]){5, 4, 2, 3, 1});
     sort_test("TEST 119", 5, (int[]){5, 4, 3, 1, 2});
     sort_test("TEST 120", 5, (int[]){5, 4, 3, 2, 1});
+    printf("\n");
+}
+
+void    size_100_test()
+{
+    printf("SIZE OF 100\n");
+    int array[100];
+    for (int i = 0; i < 100; i++)
+        array[i] = generate_number_in_range(i, 100);
+    sort_test("TEST 1", 100, array);
     printf("\n");
 }

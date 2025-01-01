@@ -6,7 +6,7 @@
 #    By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 17:00:10 by aayoub            #+#    #+#              #
-#    Updated: 2024/12/30 04:10:28 by aayoub           ###   ########.fr        #
+#    Updated: 2024/12/30 17:59:02 by aayoub           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ LIBFT = $(LIBFT_DIR)/libft.a
 SRC_DIR = src
 SRC = 	$(SRC_DIR)/sort_small.c $(SRC_DIR)/stack_check.c $(SRC_DIR)/stack_push.c \
 		$(SRC_DIR)/stack_rotate.c $(SRC_DIR)/stack_swap.c $(SRC_DIR)/stack_utils.c \
-		$(SRC_DIR)/stack.c $(SRC_DIR)/sort.c $(SRC_DIR)/tester.c
+		$(SRC_DIR)/stack.c $(SRC_DIR)/sort.c $(SRC_DIR)/tester.c $(SRC_DIR)/sort_large.c
 
 OBJ_DIR = obj
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
