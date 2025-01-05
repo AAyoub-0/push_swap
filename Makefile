@@ -6,7 +6,7 @@
 #    By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 17:00:10 by aayoub            #+#    #+#              #
-#    Updated: 2024/12/30 17:59:02 by aayoub           ###   ########.fr        #
+#    Updated: 2025/01/06 00:20:45 by aayoub           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ) $(HEAD)
+$(NAME): $(LIBFT) $(OBJ) $(HEAD) $(SRC) Makefile
 	$(CC) main.c $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEAD) Makefile | $(OBJ_DIR)

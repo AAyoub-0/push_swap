@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:51 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/30 04:25:12 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/06 00:28:12 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	stack_print(t_stack *stack)
 
 	if (stack->top == -1)
 	{
-		printf("Stack is empty\n");
+		printf("Stack[%p] { NULL }\n", stack);
 		return ;
 	}
 	i = 0;

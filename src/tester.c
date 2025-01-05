@@ -6,26 +6,38 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 03:37:11 by aayoub            #+#    #+#             */
-/*   Updated: 2024/12/30 18:05:17 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/06 00:13:44 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
 # include <time.h>
 
-int generate_number_in_range(int min, int max) {
-    static unsigned long seed = 0;
-    if (seed == 0) {
-        // Initialisation avec le temps actuel en secondes
-        seed = (unsigned long)time(NULL);
+void generate_unique_numbers(int *array, int size, int min, int max) {
+    if (max - min + 1 < size) {
+        fprintf(stderr, "Erreur : plage trop petite pour générer des nombres uniques.\n");
+        exit(EXIT_FAILURE);
     }
 
-    // Linear Congruential Generator (LCG) - Simple générateur pseudo-aléatoire
-    seed = (seed * 1103515245 + 12345) & 0x7fffffff;
-
-    // Calculer un nombre dans la plage [min, max]
+    // Remplir un tableau temporaire avec tous les nombres possibles
     int range = max - min + 1;
-    return min + (seed % range);
+    int temp[range];
+    for (int i = 0; i < range; i++) {
+        temp[i] = min + i;
+    }
+
+    // Mélanger les nombres dans le tableau temporaire
+    for (int i = range - 1; i > 0; i--) {
+        int j = rand() % (i + 1);
+        int swap = temp[i];
+        temp[i] = temp[j];
+        temp[j] = swap;
+    }
+
+    // Copier les premiers "size" éléments dans le tableau final
+    for (int i = 0; i < size; i++) {
+        array[i] = temp[i];
+    }
 }
 
 void    sort_test(char *test, int size, int *array)
@@ -42,9 +54,9 @@ void    sort_test(char *test, int size, int *array)
     else if (size == 5)
         sort_five(stack_a, stack_b);
     else
-        merge_sort(stack_a, stack_b, 0, stack_a->size - 1);
+        median_sort(stack_a, stack_b);
     stack_print(stack_a);
-    if  (is_sorted(stack_a))
+    if  (is_sorted(stack_a) && stack_b->top == -1 && stack_a->top == size - 1) 
         printf("\033[0;32m%s OK\033[0m\n", test);
     else
         printf("\033[0;31m%s KO\033[0m\n", test);
@@ -217,6 +229,7 @@ void    size_5_test()
     sort_test("TEST 118", 5, (int[]){5, 4, 2, 3, 1});
     sort_test("TEST 119", 5, (int[]){5, 4, 3, 1, 2});
     sort_test("TEST 120", 5, (int[]){5, 4, 3, 2, 1});
+    sort_test("TEST 120", 5, (int[]){100, 99, 98, 97, 96});
     printf("\n");
 }
 
@@ -224,8 +237,7 @@ void    size_100_test()
 {
     printf("SIZE OF 100\n");
     int array[100];
-    for (int i = 0; i < 100; i++)
-        array[i] = generate_number_in_range(i, 100);
+    generate_unique_numbers(array, 100, 1, 100);
     sort_test("TEST 1", 100, array);
     printf("\n");
 }

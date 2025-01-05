@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:17:33 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/30 17:19:15 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/06 00:17:07 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,29 +47,13 @@ int get_min(t_stack *stack)
 
     i = 0;
     min = stack->data[0];
-    while (i < stack->size)
+    while (i <= stack->top)
     {
         if (stack->data[i] < min)
             min = stack->data[i];
         i++;
     }
     return (min);
-}
-
-int get_max(t_stack *stack)
-{
-    int i;
-    int max;
-
-    i = 0;
-    max = stack->data[0];
-    while (i < stack->size)
-    {
-        if (stack->data[i] > max)
-            max = stack->data[i];
-        i++;
-    }
-    return (max);
 }
 
 void    sort_four(t_stack *stack_a, t_stack *stack_b)
@@ -81,7 +65,7 @@ void    sort_four(t_stack *stack_a, t_stack *stack_b)
     min = get_min(stack_a);
     while (stack_a->data[0] != min)
     {
-        if (stack_a->data[stack_a->size - 1] == min)
+        if (stack_a->data[stack_a->top] == min)
             stack_reverse_rotate(stack_a, 1);
         else
             stack_rotate(stack_a, 1);
@@ -102,7 +86,7 @@ void    sort_five(t_stack *stack_a, t_stack *stack_b)
     min = get_min(stack_a);
     while (stack_a->data[0] != min)
     {
-        if (stack_a->data[stack_a->size - 1] == min)
+        if (stack_a->data[stack_a->top] == min)
             stack_reverse_rotate(stack_a, 1);
         else
             stack_rotate(stack_a, 1);
