@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:13:55 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/05 23:16:23 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/06 17:30:42 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@ typedef struct s_stack
 	int	top;
 	int	size;
 }		t_stack;
+
+typedef struct s_mq
+{
+	int	med;
+	int	q1;
+	int	q2;
+	int	len;
+}		t_mq;
 
 typedef unsigned char t_bool;
 
@@ -64,7 +72,8 @@ void    sort_three(t_stack *stack);
 void    sort_four(t_stack *stack_a, t_stack *stack_b);
 void	sort_five(t_stack *stack_a, t_stack *stack_b);
 
-void	median_sort(t_stack *stack_a, t_stack *stack_b);
+void	get_median_quartil(t_stack *stack_a, t_mq **mq, int *error);
+void	sort_large(t_stack *stack_a, t_stack *stack_b);
 
 void    sort_test(char *test, int size, int *array);
 void    size_4_test();

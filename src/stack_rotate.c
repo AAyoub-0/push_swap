@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:58 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/23 17:44:40 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/06 15:31:13 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	stack_rotate(t_stack *stack, t_bool print)
 		return ;
 	tmp = stack->data[0];
 	i = 0;
-	while (i < stack->top)
+	while (i <= stack->top)
 	{
 		stack->data[i] = stack->data[i + 1];
 		i++;

@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 03:37:11 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/06 00:13:44 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/06 16:31:43 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void    sort_test(char *test, int size, int *array)
     else if (size == 5)
         sort_five(stack_a, stack_b);
     else
-        median_sort(stack_a, stack_b);
+        sort_large_stack(stack_a, stack_b);
     stack_print(stack_a);
     if  (is_sorted(stack_a) && stack_b->top == -1 && stack_a->top == size - 1) 
         printf("\033[0;32m%s OK\033[0m\n", test);

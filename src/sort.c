@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 17:45:38 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/05 23:17:04 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/06 17:30:21 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,6 @@ void    sort(t_stack *stack_a, t_stack *stack_b)
     else if (stack_a->size == 5)
         sort_five(stack_a, stack_b);
     else
-        median_sort(stack_a, stack_b);
+        sort_large(stack_a, stack_b);
     return ;
 }
