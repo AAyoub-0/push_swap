@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 03:37:11 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/12 02:10:07 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/12 17:52:49 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,17 +246,65 @@ void    test_targets()
 {
     printf("\n");
     printf("Test of targets\n");
-    t_stack *stack_a = stack_create(10, 'a');
-    t_stack *stack_b = stack_create(10, 'b');
+    t_stack *stack_a = stack_create(9, 'a');
+    t_stack *stack_b = stack_create(9, 'b');
     stack_push_array(stack_a, (int[]){-38, 10, 7, 42}, 4);
-    stack_push_array(stack_b, (int[]){25, 0, 99}, 3);
+    stack_push_array(stack_b, (int[]){25, -10, 99}, 3);
+    int size_a = stack_a->top + 1;
     stack_print(stack_a);
     stack_print(stack_b);
+    
     set_target_a(stack_a, stack_b);
     print_array(stack_a->target, stack_a->top + 1);
+    
     push_cheapest_a(stack_a, stack_b);
-    printf("Pushing cheapest to b\n");
     stack_print(stack_a);
     stack_print(stack_b);
+
+    sort_three(stack_a);
+    stack_print(stack_a);
+    stack_print(stack_b);
+    
+    printf("Setting b stack targets\n");
+    set_target_b(stack_b, stack_a);
+    print_array(stack_b->target, stack_b->top + 1);
+
+    push_cheapest_b(stack_b, stack_a);
+    stack_print(stack_a);
+    stack_print(stack_b);
+
+    printf("Setting b stack targets\n");
+    set_target_b(stack_b, stack_a);
+    print_array(stack_b->target, stack_b->top + 1);
+
+    push_cheapest_b(stack_b, stack_a);
+    stack_print(stack_a);
+    stack_print(stack_b);
+
+    printf("Setting b stack targets\n");
+    set_target_b(stack_b, stack_a);
+    print_array(stack_b->target, stack_b->top + 1);
+
+    push_cheapest_b(stack_b, stack_a);
+    stack_print(stack_a);
+    stack_print(stack_b);
+
+    printf("Setting b stack targets\n");
+    set_target_b(stack_b, stack_a);
+    print_array(stack_b->target, stack_b->top + 1);
+
+    push_cheapest_b(stack_b, stack_a);
+    stack_print(stack_a);
+    stack_print(stack_b);
+
+    printf("Min on top\n");
+    move_min_to_top(stack_a);
+    stack_print(stack_a);
+
+    if (is_sorted(stack_a))
+        printf("\033[0;32mTEST OK\033[0m\n");
+    else
+        printf("\033[0;31mTEST KO\033[0m\n");
+
     printf("\n");
 }

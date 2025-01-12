@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:13:55 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/12 02:05:01 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/12 17:50:06 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,12 @@ void    sort_three(t_stack *stack);
 void    sort_four(t_stack *stack_a, t_stack *stack_b);
 void	sort_five(t_stack *stack_a, t_stack *stack_b);
 
-void	push_cheapest_a(t_stack *stack_a, t_stack *stack_b);
 void	sort_large(t_stack *stack_a, t_stack *stack_b);
 void	set_target_a(t_stack *stack_a, t_stack *stack_b);
 void	set_target_b(t_stack *stack_b, t_stack *stack_a);
+void	push_cheapest_a(t_stack *stack_a, t_stack *stack_b);
+void	push_cheapest_b(t_stack *stack_b, t_stack *stack_a);
+void	move_min_to_top(t_stack *stack);
 
 void    sort_test(char *test, int size, int *array);
 void    size_4_test();
