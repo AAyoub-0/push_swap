@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 03:37:11 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/06 16:31:43 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/12 02:10:07 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void    sort_test(char *test, int size, int *array)
 {
     t_stack *stack_a = stack_create(size, 'a');
     t_stack *stack_b = stack_create(size, 'b');
-    stack_push_array(stack_a, array);
+    stack_push_array(stack_a, array, size);
 
     stack_print(stack_a);
     if (size == 3)
@@ -54,7 +54,7 @@ void    sort_test(char *test, int size, int *array)
     else if (size == 5)
         sort_five(stack_a, stack_b);
     else
-        sort_large_stack(stack_a, stack_b);
+        sort_large(stack_a, stack_b);
     stack_print(stack_a);
     if  (is_sorted(stack_a) && stack_b->top == -1 && stack_a->top == size - 1) 
         printf("\033[0;32m%s OK\033[0m\n", test);
@@ -239,5 +239,24 @@ void    size_100_test()
     int array[100];
     generate_unique_numbers(array, 100, 1, 100);
     sort_test("TEST 1", 100, array);
+    printf("\n");
+}
+
+void    test_targets()
+{
+    printf("\n");
+    printf("Test of targets\n");
+    t_stack *stack_a = stack_create(10, 'a');
+    t_stack *stack_b = stack_create(10, 'b');
+    stack_push_array(stack_a, (int[]){-38, 10, 7, 42}, 4);
+    stack_push_array(stack_b, (int[]){25, 0, 99}, 3);
+    stack_print(stack_a);
+    stack_print(stack_b);
+    set_target_a(stack_a, stack_b);
+    print_array(stack_a->target, stack_a->top + 1);
+    push_cheapest_a(stack_a, stack_b);
+    printf("Pushing cheapest to b\n");
+    stack_print(stack_a);
+    stack_print(stack_b);
     printf("\n");
 }

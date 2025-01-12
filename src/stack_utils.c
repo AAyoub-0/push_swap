@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:51 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/06 15:25:01 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/12 00:48:38 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,27 @@ void	stack_print(t_stack *stack)
 	{
 		printf("%d", stack->data[i]);
 		if (i < stack->top)
+			printf(", ");
+		i++;
+	}
+	printf(" }\n");
+}
+
+void	print_array(int *array, int size)
+{
+	int	i;
+
+	if (size == 0)
+	{
+		printf("Array[%p] { NULL }\n", array);
+		return ;
+	}
+	i = 0;
+	printf("Array[%p] { ", array);
+	while (i < size)
+	{
+		printf("%d", array[i]);
+		if (i < size - 1)
 			printf(", ");
 		i++;
 	}

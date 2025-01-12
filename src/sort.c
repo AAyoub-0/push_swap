@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 17:45:38 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/06 17:30:21 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/11 22:48:18 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ t_bool  is_sorted(t_stack *stack)
     while (i < stack->top)
     {
         if (stack->data[i] > stack->data[i + 1])
-            return (FALSE);
+            return (false);
         i++;
     }
-    return (TRUE);
+    return (true);
 }
 
 t_bool  is_sorted_desc(t_stack *stack)
@@ -34,10 +34,10 @@ t_bool  is_sorted_desc(t_stack *stack)
     while (i < stack->top)
     {
         if (stack->data[i] < stack->data[i + 1])
-            return (FALSE);
+            return (false);
         i++;
     }
-    return (TRUE);
+    return (true);
 }
 
 void    sort(t_stack *stack_a, t_stack *stack_b)

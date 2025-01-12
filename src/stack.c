@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:55 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/05 23:37:59 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/12 01:34:02 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_stack	*stack_create(int size, char name)
 
 	stack = malloc(sizeof(t_stack));
 	stack->data = malloc(size * sizeof(int));
+	stack->target = malloc(size * sizeof(int));
 	stack->name = ft_calloc(2, sizeof(char));
 	stack->name[0] = name;
 	stack->top = -1;

@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:13:55 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/06 17:30:42 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/12 02:05:01 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,22 +23,16 @@ typedef struct s_stack
 {
 	char *name;
 	int	*data;
+	int *target;
 	int	top;
 	int	size;
 }		t_stack;
 
-typedef struct s_mq
+typedef enum e_bool
 {
-	int	med;
-	int	q1;
-	int	q2;
-	int	len;
-}		t_mq;
-
-typedef unsigned char t_bool;
-
-# define TRUE 1
-# define FALSE 0
+	false = 0,
+	true = 1
+}		t_bool;
 
 t_stack	*stack_create(int size, char name);
 void	stack_pop(t_stack *stack);
@@ -46,6 +40,7 @@ void	stack_delete(t_stack *stack, int index);
 void	stack_destroy(t_stack *stack);
 
 void	stack_print(t_stack *stack);
+void	print_array(int *array, int size);
 t_stack	*stack_create_from_str(char *str, char name);
 int		stack_str_size(char *str);
 
@@ -54,7 +49,7 @@ void	stack_swap(t_stack *stack, t_bool print);
 void	stack_swap_both(t_stack *stack_a, t_stack *stack_b, t_bool print);
 
 void	stack_push(t_stack *stack, int value);
-void	stack_push_array(t_stack *stack, int *array);
+void	stack_push_array(t_stack *stack, int *array, int size);
 void	stack_push_to(t_stack *stack_from, t_stack *stack_to, t_bool print);
 
 void	stack_rotate(t_stack *stack, t_bool print);
@@ -72,13 +67,16 @@ void    sort_three(t_stack *stack);
 void    sort_four(t_stack *stack_a, t_stack *stack_b);
 void	sort_five(t_stack *stack_a, t_stack *stack_b);
 
-void	get_median_quartil(t_stack *stack_a, t_mq **mq, int *error);
+void	push_cheapest_a(t_stack *stack_a, t_stack *stack_b);
 void	sort_large(t_stack *stack_a, t_stack *stack_b);
+void	set_target_a(t_stack *stack_a, t_stack *stack_b);
+void	set_target_b(t_stack *stack_b, t_stack *stack_a);
 
 void    sort_test(char *test, int size, int *array);
 void    size_4_test();
 void    size_3_test();
 void    size_5_test();
 void    size_100_test();
+void    test_targets();
 
 #endif

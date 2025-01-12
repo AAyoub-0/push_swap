@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:46 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/05 23:37:35 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/12 01:34:59 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,12 @@ void	stack_push_first(t_stack *stack, int value)
 	stack->top++;
 }
 
-void	stack_push_array(t_stack *stack, int *array)
+void	stack_push_array(t_stack *stack, int *array, int size)
 {
 	int i;
 
 	i = 0;
-	while (i < stack->size)
+	while (i < size)
 	{
 		stack->data[i] = array[i];
 		stack->top++;

@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:34:53 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/06 00:09:12 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/12 00:42:48 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int main(void)
     // tab of five
     // size_5_test();
     // tab of 100
-    size_100_test();
+    // size_100_test();
+    test_targets();
     return (0);
 }
