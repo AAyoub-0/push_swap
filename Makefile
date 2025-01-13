@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+         #
+#    By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 17:00:10 by aayoub            #+#    #+#              #
-#    Updated: 2025/01/06 00:20:45 by aayoub           ###   ########.fr        #
+#    Updated: 2025/01/13 16:38:53 by aboumall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ LIBFT = $(LIBFT_DIR)/libft.a
 SRC_DIR = src
 SRC = 	$(SRC_DIR)/sort_small.c $(SRC_DIR)/stack_check.c $(SRC_DIR)/stack_push.c \
 		$(SRC_DIR)/stack_rotate.c $(SRC_DIR)/stack_swap.c $(SRC_DIR)/stack_utils.c \
-		$(SRC_DIR)/stack.c $(SRC_DIR)/sort.c $(SRC_DIR)/tester.c $(SRC_DIR)/sort_large.c
+		$(SRC_DIR)/stack.c $(SRC_DIR)/sort.c $(SRC_DIR)/tester.c $(SRC_DIR)/sort_large.c \
+		$(SRC_DIR)/target.c $(SRC_DIR)/cheapest_move.c
 
 OBJ_DIR = obj
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
