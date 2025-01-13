@@ -6,13 +6,13 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:35:15 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/13 16:57:51 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/13 17:53:42 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
 
-int	get_max_index(t_stack *stack)
+int	get_max_index(t_stack *s)
 {
 	int	i;
 	int	max;
@@ -21,11 +21,11 @@ int	get_max_index(t_stack *stack)
 	i = 0;
 	max = INT_MIN;
 	index = 0;
-	while (i <= (*stack).top)
+	while (i <= (*s).top)
 	{
-		if ((*stack).data[i] > max)
+		if ((*s).data[i] > max)
 		{
-			max = (*stack).data[i];
+			max = (*s).data[i];
 			index = i;
 		}
 		i++;
@@ -33,7 +33,7 @@ int	get_max_index(t_stack *stack)
 	return (index);
 }
 
-int	get_min_index(t_stack *stack)
+int	get_min_index(t_stack *s)
 {
 	int	i;
 	int	min;
@@ -42,11 +42,11 @@ int	get_min_index(t_stack *stack)
 	i = 0;
 	min = INT_MAX;
 	index = 0;
-	while (i <= (*stack).top)
+	while (i <= (*s).top)
 	{
-		if ((*stack).data[i] < min)
+		if ((*s).data[i] < min)
 		{
-			min = (*stack).data[i];
+			min = (*s).data[i];
 			index = i;
 		}
 		i++;
@@ -54,79 +54,78 @@ int	get_min_index(t_stack *stack)
 	return (index);
 }
 
-int	get_cheapest_index(t_stack *stack, int o_stack_len)
+int	get_cheapest_index(t_stack *s, int o_s_len)
 {
 	int		i;
+	int		c_i;
 	long	cheapest;
-	int		cheapest_index;
 	int		push_cost;
 
 	i = 0;
 	cheapest = LONG_MAX;
-	cheapest_index = 0;
-	while (i < (stack->top + 1))
+	c_i = 0;
+	while (i < (s->top + 1))
 	{
 		push_cost = i;
-		if (i > (stack->top + 1) / 2)
-			push_cost = (stack->top + 1) - i;
-		if (stack->target[i] <= o_stack_len / 2)
-			push_cost += stack->target[i];
+		if (i > (s->top + 1) / 2)
+			push_cost = (s->top + 1) - i;
+		if (s->target[i] <= o_s_len / 2)
+			push_cost += s->target[i];
 		else
-			push_cost += o_stack_len - stack->target[i];
+			push_cost += o_s_len - s->target[i];
 		if (push_cost < cheapest)
 		{
 			cheapest = push_cost;
-			cheapest_index = i;
+			c_i = i;
 		}
 		i++;
 	}
-	return (cheapest_index);
+	return (c_i);
 }
 
-void	push_cheapest_a(t_stack *stack_a, t_stack *stack_b)
+void	push_cheapest_a(t_stack *s_a, t_stack *s_b)
 {
 	int	i;
 	int	len_a;
 	int	len_b;
-	int	cheapest_index;
+	int	c_i;
 
-	len_a = stack_a->top + 1;
-	len_b = stack_b->top + 1;
-	cheapest_index = get_cheapest_index(stack_a, len_b);
-/* 	i = 0;
-	if (cheapest_index < len_a / 2 && stack_a->target[cheapest_index] < len_b
-	/ 2)
-		while (i++ < cheapest_index)
-			stack_rotate_both(stack_a, stack_b, true);
-	if (cheapest_index >= len_a / 2
-	&& stack_a->target[cheapest_index] >= len_b / 2)
-		while (i++ < len_a - cheapest_index)
-			stack_reverse_rotate_both(stack_a, stack_b, true);
-	cheapest_index -= i; */
-	put_target_on_top_a(stack_a, stack_b, cheapest_index);
-	stack_push_to(stack_a, stack_b, true);
+	len_a = s_a->top + 1;
+	len_b = s_b->top + 1;
+	c_i = get_c_i(s_a, len_b);
+	i = 0;
+	if (c_i < len_a / 2 && s_a->target[c_i] < len_b / 2)
+		while (i++ < c_i)
+			stack_rotate_both(s_a, s_b, true);
+	else
+		while (i++ < len_a - c_i)
+			stack_reverse_rotate_both(s_a, s_b, true);
+	c_i -= i;
+	put_target_on_top_a(s_a, s_b, c_i);
+	stack_push_to(s_a, s_b, true);
 }
 
-void	push_cheapest_b(t_stack *stack_b, t_stack *stack_a)
+void	push_cheapest_b(t_stack *s_b, t_stack *s_a)
 {
-	int		i;
-	int		len_a;
-	int		len_b;
-	int		cheapest_index;
+	int	i;
+	int	len_a;
+	int	len_b;
+	int	c_i;
 
-	len_a = stack_a->top + 1;
-	len_b = stack_b->top + 1;
-	cheapest_index = get_cheapest_index(stack_b, len_a);
-/* 	i = 0;
-	if (cheapest_index < len_b / 2 && stack_b->target[cheapest_index] < len_a
-	/ 2)
-		while (i++ < cheapest_index)
-			stack_rotate_both(stack_a, stack_b, true);
-	if (cheapest_index >= len_b / 2
-	&& stack_b->target[cheapest_index] >= len_a / 2)
-		while (i++ < len_b - cheapest_index)
-			stack_reverse_rotate_both(stack_a, stack_b, true);
-	cheapest_index -= i; */
-	put_target_on_top_b(stack_b, stack_a, cheapest_index);
-	stack_push_to(stack_b, stack_a, true);
+	len_a = s_a->top + 1;
+	len_b = s_b->top + 1;
+	c_i = get_c_i(s_b, len_a);
+	/* 	i = 0;
+		if (c_i < len_b / 2 && s_b->target[c_i] < len_a
+		/ 2)
+			while (i++ < c_i)
+				stack_rotate_both(s_a, s_b, true);
+		c_i -= i;
+		if (c_i >= len_b / 2
+		&& s_b->target[c_i] >= len_a / 2)
+			while (i++ < len_b - c_i)
+				stack_reverse_rotate_both(s_a, s_b, true);
+		c_i -= i; */
+	put_target_on_top_b(s_b, s_a, c_i);
+	stack_push_to(s_b, s_a, true);
 }

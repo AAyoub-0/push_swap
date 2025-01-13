@@ -6,112 +6,112 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:29:28 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/13 16:55:23 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/13 17:54:50 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
 
-void	set_target_a(t_stack *stack_a, t_stack *stack_b)
+void	set_target_a(t_stack *s_a, t_stack *s_b)
 {
 	int		i;
 	int		j;
-	long	best_target;
+	long	best;
 
 	i = 0;
-	while (i <= (*stack_a).top)
+	while (i <= (*s_a).top)
 	{
 		j = 0;
-		best_target = LONG_MIN;
-		while (j <= (*stack_b).top)
+		best = LONG_MIN;
+		while (j <= (*s_b).top)
 		{
-			if ((*stack_b).data[j] < (*stack_a).data[i]
-				&& (*stack_b).data[j] > best_target)
+			if ((*s_b).data[j] < (*s_a).data[i]
+				&& (*s_b).data[j] > best)
 			{
-				best_target = (*stack_b).data[j];
-				(*stack_a).target[i] = j;
+				best = (*s_b).data[j];
+				(*s_a).target[i] = j;
 			}
 			j++;
 		}
-		if (best_target == LONG_MIN)
-			(*stack_a).target[i] = get_max_index(stack_b);
+		if (best == LONG_MIN)
+			(*s_a).target[i] = get_max_index(s_b);
 		i++;
 	}
 }
 
-void	set_target_b(t_stack *stack_b, t_stack *stack_a)
+void	set_target_b(t_stack *s_b, t_stack *s_a)
 {
 	int		i;
 	int		j;
-	long	best_target;
+	long	best;
 
 	i = 0;
-	while (i <= (*stack_b).top)
+	while (i <= (*s_b).top)
 	{
 		j = 0;
-		best_target = LONG_MAX;
-		while (j <= (*stack_a).top)
+		best = LONG_MAX;
+		while (j <= (*s_a).top)
 		{
-			if ((*stack_a).data[j] > (*stack_b).data[i]
-				&& (*stack_a).data[j] < best_target)
+			if ((*s_a).data[j] > (*s_b).data[i]
+				&& (*s_a).data[j] < best)
 			{
-				best_target = (*stack_a).data[j];
-				(*stack_b).target[i] = j;
+				best = (*s_a).data[j];
+				(*s_b).target[i] = j;
 			}
 			j++;
 		}
-		if (best_target == LONG_MAX)
-			(*stack_b).target[i] = get_min_index(stack_a);
+		if (best == LONG_MAX)
+			(*s_b).target[i] = get_min_index(s_a);
 		i++;
 	}
 }
 
-void	put_target_on_top_a(t_stack *stack_a, t_stack *stack_b,
-		int cheapest_index)
+void	put_target_on_top_a(t_stack *s_a, t_stack *s_b,
+		int c_i)
 {
 	int	i;
 	int	len_a;
 	int	len_b;
 
 	i = 0;
-	len_a = (*stack_a).top + 1;
-	len_b = (*stack_b).top + 1;
-	if (cheapest_index < len_a / 2)
-		while (i++ < cheapest_index)
-			stack_rotate(stack_a, true);
+	len_a = (*s_a).top + 1;
+	len_b = (*s_b).top + 1;
+	if (c_i < len_a / 2)
+		while (i++ < c_i)
+			stack_rotate(s_a, true);
 	else
-		while (i++ < len_a - cheapest_index)
-			stack_reverse_rotate(stack_a, true);
+		while (i++ < len_a - c_i)
+			stack_reverse_rotate(s_a, true);
 	i = 0;
-	if (stack_a->target[cheapest_index] < len_b / 2)
-		while (i++ < stack_a->target[cheapest_index])
-			stack_rotate(stack_b, true);
+	if (s_a->target[c_i] < len_b / 2)
+		while (i++ < s_a->target[c_i])
+			stack_rotate(s_b, true);
 	else
-		while (i++ < len_b - stack_a->target[cheapest_index])
-			stack_reverse_rotate(stack_b, true);
+		while (i++ < len_b - s_a->target[c_i])
+			stack_reverse_rotate(s_b, true);
 }
 
-void	put_target_on_top_b(t_stack *stack_b, t_stack *stack_a,
-		int cheapest_index)
+void	put_target_on_top_b(t_stack *s_b, t_stack *s_a,
+		int c_i)
 {
 	int	i;
 	int	len_a;
 	int	len_b;
 
 	i = 0;
-	len_a = stack_a->top + 1;
-	len_b = stack_b->top + 1;
-	if (cheapest_index < len_b / 2)
-		while (i++ < cheapest_index)
-			stack_rotate(stack_b, true);
+	len_a = s_a->top + 1;
+	len_b = s_b->top + 1;
+	if (c_i < len_b / 2)
+		while (i++ < c_i)
+			stack_rotate(s_b, true);
 	else
-		while (i++ < len_b - cheapest_index)
-			stack_reverse_rotate(stack_b, true);
+		while (i++ < len_b - c_i)
+			stack_reverse_rotate(s_b, true);
 	i = 0;
-	if (stack_b->target[cheapest_index] < len_a / 2)
-		while (i++ < stack_b->target[cheapest_index])
-			stack_rotate(stack_a, true);
+	if (s_b->target[c_i] < len_a / 2)
+		while (i++ < s_b->target[c_i])
+			stack_rotate(s_a, true);
 	else
-		while (i++ < len_a - stack_b->target[cheapest_index])
-			stack_reverse_rotate(stack_a, true);
+		while (i++ < len_a - s_b->target[c_i])
+			stack_reverse_rotate(s_a, true);
 }

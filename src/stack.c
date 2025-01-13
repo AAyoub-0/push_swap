@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:55 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/12 01:34:02 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/13 17:55:22 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,31 +26,31 @@ t_stack	*stack_create(int size, char name)
 	return (stack);
 }
 
-void	stack_pop(t_stack *stack)
+void	stack_pop(t_stack *s)
 {
-	if (stack->top == -1)
+	if (s->top == -1)
 		return ;
-	stack->top--;
+	s->top--;
 }
 
-void	stack_delete(t_stack *stack, int index)
+void	stack_delete(t_stack *s, int index)
 {
 	int	i;
 
-	if (index < 0 || index > stack->top)
+	if (index < 0 || index > s->top)
 		return ;
 	i = index;
-	while (i < stack->top)
+	while (i < s->top)
 	{
-		stack->data[i] = stack->data[i + 1];
+		s->data[i] = s->data[i + 1];
 		i++;
 	}
-	stack->top--;
+	s->top--;
 }
 
-void	stack_destroy(t_stack *stack)
+void	stack_destroy(t_stack *s)
 {
-	free(stack->data);
-	free(stack->name);
-	free(stack);
+	free(s->data);
+	free(s->name);
+	free(s);
 }

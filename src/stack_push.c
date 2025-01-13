@@ -6,53 +6,53 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:46 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/13 16:51:52 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/13 17:57:18 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
 
-void	stack_push(t_stack *stack, int value)
+void	stack_push(t_stack *s, int value)
 {
-	if (stack->top == stack->size - 1)
+	if (s->top == s->size - 1)
 		return ;
-	stack->data[++stack->top] = value;
+	s->data[++s->top] = value;
 }
 
-void	stack_push_first(t_stack *stack, int value)
+void	stack_push_first(t_stack *s, int value)
 {
 	int	i;
 
-	i = stack->top;
+	i = s->top;
 	while (i >= 0)
 	{
-		stack->data[i + 1] = stack->data[i];
+		s->data[i + 1] = s->data[i];
 		i--;
 	}
-	stack->data[0] = value;
-	stack->top++;
+	s->data[0] = value;
+	s->top++;
 }
 
-void	stack_push_array(t_stack *stack, int *array, int size)
+void	stack_push_array(t_stack *s, int *array, int size)
 {
 	int	i;
 
 	i = 0;
 	while (i < size)
 	{
-		stack->data[i] = array[i];
-		stack->top++;
+		s->data[i] = array[i];
+		s->top++;
 		i++;
 	}
 }
-void	stack_push_to(t_stack *stack_from, t_stack *stack_to, t_bool print)
+void	stack_push_to(t_stack *s_from, t_stack *s_to, t_bool print)
 {
-	if (stack_from->top == -1)
+	if (s_from->top == -1)
 		return ;
-	if (stack_to->top == stack_to->size - 1)
+	if (s_to->top == s_to->size - 1)
 		return ;
-	stack_push_first(stack_to, stack_from->data[0]);
-	stack_delete(stack_from, 0);
+	stack_push_first(s_to, s_from->data[0]);
+	stack_delete(s_from, 0);
 	if (print)
-		printf("p%c\n", stack_to->name[0]);
+		printf("p%c\n", s_to->name[0]);
 }

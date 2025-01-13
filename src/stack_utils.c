@@ -3,30 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:51 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/12 00:48:38 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/13 17:56:01 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
 
-void	stack_print(t_stack *stack)
+void	stack_print(t_stack *s)
 {
 	int	i;
 
-	if (stack->top == -1)
+	if (s->top == -1)
 	{
-		printf("Stack[%p] { NULL }\n", stack);
+		printf("s[%p] { NULL }\n", s);
 		return ;
 	}
 	i = 0;
-	printf("Stack[%p] { ", stack);
-	while (i <= stack->top)
+	printf("Stack[%p] { ", s);
+	while (i <= s->top)
 	{
-		printf("%d", stack->data[i]);
-		if (i < stack->top)
+		printf("%d", s->data[i]);
+		if (i < s->top)
 			printf(", ");
 		i++;
 	}
@@ -58,24 +58,24 @@ t_stack	*stack_create_from_str(char *str, char name)
 {
 	int		i;
 	int		sign;
-	t_stack	*stack;
+	t_stack	*s;
 
 	i = 0;
 	sign = 1;
-	stack = stack_create(stack_str_size(str), name);
+	s = stack_create(stack_str_size(str), name);
 	while (str[i])
 	{
 		if (str[i] == '-')
 			sign = -1;
 		while (str[i] >= '0' && str[i] <= '9')
 		{
-			stack_push(stack, (str[i] - '0') * sign);
+			stack_push(s, (str[i] - '0') * sign);
 			i++;
 		}
 		sign = 1;
 		i++;
 	}
-	return (stack);
+	return (s);
 }
 
 int	stack_str_size(char *str)

@@ -6,94 +6,94 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:17:33 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/13 16:51:40 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/13 17:58:28 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
 
-void	sort_two(t_stack *stack)
+void	sort_two(t_stack *s)
 {
-	if (stack->data[0] > stack->data[1])
-		stack_swap(stack, true);
+	if (s->data[0] > s->data[1])
+		stack_swap(s, true);
 }
 
-void	sort_three(t_stack *stack)
+void	sort_three(t_stack *s)
 {
-	if (is_sorted(stack))
+	if (is_sorted(s))
 		return ;
-	if (is_sorted_desc(stack))
+	if (is_sorted_desc(s))
 	{
-		stack_rotate(stack, true);
-		stack_swap(stack, true);
+		stack_rotate(s, true);
+		stack_swap(s, true);
 	}
-	else if (stack->data[0] > stack->data[1] && stack->data[0] > stack->data[2])
-		stack_rotate(stack, true);
-	else if (stack->data[0] < stack->data[1] && stack->data[0] > stack->data[2])
-		stack_reverse_rotate(stack, true);
-	else if (stack->data[0] < stack->data[1] && stack->data[1] > stack->data[2])
+	else if (s->data[0] > s->data[1] && s->data[0] > s->data[2])
+		stack_rotate(s, true);
+	else if (s->data[0] < s->data[1] && s->data[0] > s->data[2])
+		stack_reverse_rotate(s, true);
+	else if (s->data[0] < s->data[1] && s->data[1] > s->data[2])
 	{
-		stack_reverse_rotate(stack, true);
-		stack_swap(stack, true);
+		stack_reverse_rotate(s, true);
+		stack_swap(s, true);
 	}
 	else
-		stack_swap(stack, true);
+		stack_swap(s, true);
 }
 
-int	get_min(t_stack *stack)
+int	get_min(t_stack *s)
 {
 	int	i;
 	int	min;
 
 	i = 0;
-	min = stack->data[0];
-	while (i <= stack->top)
+	min = s->data[0];
+	while (i <= s->top)
 	{
-		if (stack->data[i] < min)
-			min = stack->data[i];
+		if (s->data[i] < min)
+			min = s->data[i];
 		i++;
 	}
 	return (min);
 }
 
-void	sort_four(t_stack *stack_a, t_stack *stack_b)
+void	sort_four(t_stack *s_a, t_stack *s_b)
 {
 	int	min;
 
-	if (is_sorted(stack_a))
+	if (is_sorted(s_a))
 		return ;
-	min = get_min(stack_a);
-	while (stack_a->data[0] != min)
+	min = get_min(s_a);
+	while (s_a->data[0] != min)
 	{
-		if (stack_a->data[stack_a->top] == min)
-			stack_reverse_rotate(stack_a, true);
+		if (s_a->data[s_a->top] == min)
+			stack_reverse_rotate(s_a, true);
 		else
-			stack_rotate(stack_a, true);
+			stack_rotate(s_a, true);
 	}
-	if (is_sorted(stack_a))
+	if (is_sorted(s_a))
 		return ;
-	stack_push_to(stack_a, stack_b, true);
-	sort_three(stack_a);
-	stack_push_to(stack_b, stack_a, true);
+	stack_push_to(s_a, s_b, true);
+	sort_three(s_a);
+	stack_push_to(s_b, s_a, true);
 }
 
-void	sort_five(t_stack *stack_a, t_stack *stack_b)
+void	sort_five(t_stack *s_a, t_stack *s_b)
 {
 	int	min;
 
-	if (is_sorted(stack_a))
+	if (is_sorted(s_a))
 		return ;
-	min = get_min(stack_a);
-	while (stack_a->data[0] != min)
+	min = get_min(s_a);
+	while (s_a->data[0] != min)
 	{
-		if (stack_a->data[stack_a->top] == min)
-			stack_reverse_rotate(stack_a, true);
+		if (s_a->data[s_a->top] == min)
+			stack_reverse_rotate(s_a, true);
 		else
-			stack_rotate(stack_a, true);
+			stack_rotate(s_a, true);
 	}
-	if (is_sorted(stack_a))
+	if (is_sorted(s_a))
 		return ;
-	stack_push_to(stack_a, stack_b, true);
-	sort_four(stack_a, stack_b);
-	stack_push_to(stack_b, stack_a, true);
+	stack_push_to(s_a, s_b, true);
+	sort_four(s_a, s_b);
+	stack_push_to(s_b, s_a, true);
 }
