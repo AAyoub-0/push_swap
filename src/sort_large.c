@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 17:54:16 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/13 16:43:11 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/13 16:51:35 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	move_min_to_top(t_stack *stack)
 {
-	int min_index;
-	int len;
-	int i;
+	int	min_index;
+	int	len;
+	int	i;
 
 	len = (*stack).top + 1;
 	min_index = get_min_index(stack);

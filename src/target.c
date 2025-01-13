@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:29:28 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/13 16:35:39 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/13 16:55:23 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void	set_target_a(t_stack *stack_a, t_stack *stack_b)
 {
-	int i;
-	int j;
-	long best_target;
+	int		i;
+	int		j;
+	long	best_target;
 
 	i = 0;
 	while (i <= (*stack_a).top)
@@ -25,7 +25,7 @@ void	set_target_a(t_stack *stack_a, t_stack *stack_b)
 		best_target = LONG_MIN;
 		while (j <= (*stack_b).top)
 		{
-			if ((*stack_b).data[j] < (*stack_a).data[i] 
+			if ((*stack_b).data[j] < (*stack_a).data[i]
 				&& (*stack_b).data[j] > best_target)
 			{
 				best_target = (*stack_b).data[j];
@@ -41,9 +41,9 @@ void	set_target_a(t_stack *stack_a, t_stack *stack_b)
 
 void	set_target_b(t_stack *stack_b, t_stack *stack_a)
 {
-	int i;
-	int j;
-	long best_target;
+	int		i;
+	int		j;
+	long	best_target;
 
 	i = 0;
 	while (i <= (*stack_b).top)
@@ -52,7 +52,7 @@ void	set_target_b(t_stack *stack_b, t_stack *stack_a)
 		best_target = LONG_MAX;
 		while (j <= (*stack_a).top)
 		{
-			if ((*stack_a).data[j] > (*stack_b).data[i] 
+			if ((*stack_a).data[j] > (*stack_b).data[i]
 				&& (*stack_a).data[j] < best_target)
 			{
 				best_target = (*stack_a).data[j];
@@ -66,16 +66,17 @@ void	set_target_b(t_stack *stack_b, t_stack *stack_a)
 	}
 }
 
-void    put_target_on_top_a(t_stack *stack_a, t_stack *stack_b, int cheapest_index)
+void	put_target_on_top_a(t_stack *stack_a, t_stack *stack_b,
+		int cheapest_index)
 {
-	int i;
-    int len_a;
-    int len_b;
+	int	i;
+	int	len_a;
+	int	len_b;
 
-    i = 0;
-    len_a = (*stack_a).top + 1;
+	i = 0;
+	len_a = (*stack_a).top + 1;
 	len_b = (*stack_b).top + 1;
-    if (cheapest_index < len_a / 2)
+	if (cheapest_index < len_a / 2)
 		while (i++ < cheapest_index)
 			stack_rotate(stack_a, true);
 	else
@@ -90,16 +91,17 @@ void    put_target_on_top_a(t_stack *stack_a, t_stack *stack_b, int cheapest_ind
 			stack_reverse_rotate(stack_b, true);
 }
 
-void    put_target_on_top_b(t_stack *stack_b, t_stack *stack_a, int cheapest_index)
+void	put_target_on_top_b(t_stack *stack_b, t_stack *stack_a,
+		int cheapest_index)
 {
-    int i;
-    int len_a;
-    int len_b;
+	int	i;
+	int	len_a;
+	int	len_b;
 
-    i = 0;
-    len_a = stack_a->top + 1;
+	i = 0;
+	len_a = stack_a->top + 1;
 	len_b = stack_b->top + 1;
-    if (cheapest_index < len_b / 2)
+	if (cheapest_index < len_b / 2)
 		while (i++ < cheapest_index)
 			stack_rotate(stack_b, true);
 	else

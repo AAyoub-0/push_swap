@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_rotate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:58 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/06 15:31:13 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/13 16:51:57 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	stack_rotate(t_stack *stack, t_bool print)
 
 void	stack_reverse_rotate(t_stack *stack, t_bool print)
 {
-	int tmp;
-	int i;
+	int	tmp;
+	int	i;
 
 	if (stack->top < 1)
 		return ;
@@ -58,7 +58,8 @@ void	stack_rotate_both(t_stack *stack_a, t_stack *stack_b, t_bool print)
 		printf("rr\n");
 }
 
-void	stack_reverse_rotate_both(t_stack *stack_a, t_stack *stack_b, t_bool print)
+void	stack_reverse_rotate_both(t_stack *stack_a, t_stack *stack_b,
+		t_bool print)
 {
 	stack_reverse_rotate(stack_a, 0);
 	stack_reverse_rotate(stack_b, 0);

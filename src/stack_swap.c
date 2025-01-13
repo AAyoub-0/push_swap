@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_swap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:49 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/30 03:19:34 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/13 16:52:02 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 void	stack_swap(t_stack *stack, t_bool print)
 {
-	int tmp;
+	int	tmp;
+
 	if (stack->top < 1)
 		return ;
 	tmp = stack->data[0];

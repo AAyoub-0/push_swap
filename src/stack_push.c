@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_push.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:46 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/12 01:34:59 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/13 16:51:52 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	stack_push(t_stack *stack, int value)
 
 void	stack_push_first(t_stack *stack, int value)
 {
-	int i;
+	int	i;
 
 	i = stack->top;
 	while (i >= 0)
@@ -35,7 +35,7 @@ void	stack_push_first(t_stack *stack, int value)
 
 void	stack_push_array(t_stack *stack, int *array, int size)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < size)
