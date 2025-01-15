@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 16:26:45 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/15 13:19:42 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:00:46 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdint.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -72,5 +73,37 @@ void				ft_putstr_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 void	            ft_print_array_int(int *array, int size);
 void				ft_bzero(void *s, size_t n);
+
+typedef struct s_flags
+{
+	int				minus;
+	int				plus;
+	int				zero;
+	int				space;
+	int				hash;
+	int				padding;
+	int				precision;
+	char			specifier;
+}					t_flags;
+
+typedef struct s_num
+{
+	unsigned long	num;
+	int				is_negative;
+}					t_num;
+
+int					print_nchar(char c, int n);
+size_t				num_len_base(long long num, int base_len);
+void				set_flags(t_flags *flags);
+int					get_number(const char **str);
+int					write_padding_num(t_flags flags, t_num num, char *base,
+						int len);
+int					write_padding_str(t_flags flags, char *str, int len);
+int					print_flags_unbase(t_flags flags, unsigned long num,
+						char *base);
+int					print_nbase(unsigned long num, char *base, t_flags flags);
+int					print_flags_snbase(t_flags flags, long num, char *base);
+int					print_flags_str(t_flags flags, va_list args);
+int					ft_printf(const char *format, ...);
 
 #endif

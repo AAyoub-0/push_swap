@@ -6,11 +6,11 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 18:24:44 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/11 13:46:46 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:01:42 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../libft.h"
 
 int	print_nchar(char c, int n)
 {

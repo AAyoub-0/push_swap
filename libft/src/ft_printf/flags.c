@@ -6,11 +6,11 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 18:22:42 by aboumall          #+#    #+#             */
-/*   Updated: 2024/12/11 13:46:54 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/15 17:01:38 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../../libft.h"
 
 void	set_flags(t_flags *flags)
 {
