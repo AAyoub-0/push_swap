@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:51 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/15 12:03:28 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/15 18:46:21 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,19 @@ void	stack_print(t_stack *s)
 
 	if (s->top == -1)
 	{
-		printf("Stack[%p] { NULL }\n", s);
+		ft_printf("Stack[%p] { NULL }\n", s);
 		return ;
 	}
 	i = 0;
-	printf("Stack[%p] { ", s);
+	ft_printf("Stack[%p] { ", s);
 	while (i <= s->top)
 	{
-		printf("%d", s->data[i]);
+		ft_printf("%d", s->data[i]);
 		if (i < s->top)
-			printf(", ");
+			ft_printf(", ");
 		i++;
 	}
-	printf(" }\n");
+	ft_printf(" }\n");
 }
 
 int is_valid_args(char *str)
@@ -61,7 +61,7 @@ t_stack	*stack_create_from_str(char *str, char name)
             num = ft_atoi_cursor(&str[i], &i, &error);
             if (!num && !error)
             {
-                printf("Error\n");
+                ft_printf("Error\n");
                 exit(stack_destroy(s));
             }
 			stack_push(s, num);
