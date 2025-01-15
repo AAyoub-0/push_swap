@@ -6,29 +6,32 @@
 #    By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 17:00:10 by aayoub            #+#    #+#              #
-#    Updated: 2025/01/15 16:56:36 by aboumall         ###   ########.fr        #
+#    Updated: 2025/01/15 18:40:39 by aboumall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME 		= push_swap
 
-HEAD = main.h
+HEAD 		= main.h
 
-CC = cc
+CC 			= cc
 
-CFLAGS = -g
+CFLAGS 		= -g
 
-LIBFT_DIR = ./libft
-LIBFT = $(LIBFT_DIR)/libft.a
+LIBFT_DIR 	= ./libft
+SRC_DIR 	= src
 
-SRC_DIR = src
-SRC = 	$(SRC_DIR)/sort_small.c $(SRC_DIR)/stack_check.c $(SRC_DIR)/stack_push.c \
-		$(SRC_DIR)/stack_rotate.c $(SRC_DIR)/stack_swap.c $(SRC_DIR)/stack_utils.c \
-		$(SRC_DIR)/stack.c $(SRC_DIR)/sort.c $(SRC_DIR)/tester.c $(SRC_DIR)/sort_large.c \
-		$(SRC_DIR)/target.c $(SRC_DIR)/cheapest_move.c
+LIBFT 		= libft.a
+SRC 		= 	sort_small.c stack_check.c stack_push.c 	\
+				stack_rotate.c stack_swap.c stack_utils.c 	\
+				stack.c sort.c tester.c sort_large.c 		\
+				target.c cheapest_move.c
 
-OBJ_DIR = obj
-OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+LIBFT 		= $(addprefix $(LIBFT_DIR)/, $(LIBFT))
+SRC   		=	$(addprefix $(SRC_DIR)/, $(SRC))
+
+OBJ_DIR 	= obj
+OBJ 		= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
