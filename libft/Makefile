@@ -6,7 +6,7 @@
 #    By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/15 12:13:46 by aboumall          #+#    #+#              #
-#    Updated: 2025/01/15 17:05:41 by aboumall         ###   ########.fr        #
+#    Updated: 2025/01/15 18:16:20 by aboumall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ PUT_DIR = $(SRC_DIR)/put
 LST_DIR = $(SRC_DIR)/lst
 MEM_DIR = $(SRC_DIR)/mem
 PF_DIR = $(SRC_DIR)/ft_printf
+GNL_DIR = $(SRC_DIR)/gnl
 
 IS_SRC = 	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c
 STR_SRC = 	ft_strlen.c ft_strlcpy.c ft_strlcat.c ft_strchr.c ft_striteri.c ft_strncmp.c \
@@ -37,14 +38,16 @@ LST_SRC =	ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 			ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 MEM_SRC =	ft_bzero.c ft_memcpy.c ft_memchr.c ft_memcmp.c ft_memmove.c \
 			ft_memset.c ft_calloc.c
-PF_DIR =	ft_printf.c ft_printf_utils.c flags.c
+PF_SRC  =	ft_printf.c ft_printf_utils.c flags.c
+GNL_SRC =	get_next_line.c
 
 SRC = 	$(addprefix $(IS_DIR)/, $(IS_SRC))		\
 		$(addprefix $(STR_DIR)/, $(STR_SRC)) 	\
 		$(addprefix $(PUT_DIR)/, $(PUT_SRC))	\
 		$(addprefix $(LST_DIR)/, $(LST_SRC)) 	\
 		$(addprefix $(MEM_DIR)/, $(MEM_SRC))	\
-		$(addprefix $(PF_DIR)/, $(PF_SRC))
+		$(addprefix $(PF_DIR)/, $(PF_SRC))		\
+		$(addprefix $(GNL_DIR)/, $(GNL_SRC))
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
