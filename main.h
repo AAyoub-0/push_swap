@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:13:55 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/13 16:52:38 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/15 15:11:26 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,9 @@ typedef enum e_bool
 t_stack		*stack_create(int size, char name);
 void		stack_pop(t_stack *stack);
 void		stack_delete(t_stack *stack, int index);
-void		stack_destroy(t_stack *stack);
+int		    stack_destroy(t_stack *stack);
 
 void		stack_print(t_stack *stack);
-void		print_array(int *array, int size);
 t_stack		*stack_create_from_str(char *str, char name);
 int			stack_str_size(char *str);
 

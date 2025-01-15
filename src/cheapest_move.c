@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:35:15 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/13 18:00:25 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/14 20:33:51 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,14 @@ void	push_cheapest_a(t_stack *s_a, t_stack *s_b)
 	len_a = s_a->top + 1;
 	len_b = s_b->top + 1;
 	c_i = get_cheapest_index(s_a, len_b);
-	i = 0;
-	if (c_i < len_a / 2 && s_a->target[c_i] < len_b / 2)
-		while (i++ < c_i)
-			stack_rotate_both(s_a, s_b, true);
-	else
-		while (i++ < len_a - c_i)
-			stack_reverse_rotate_both(s_a, s_b, true);
-	c_i -= i;
+	/*     i = 0;
+		if (c_i < len_a / 2 && s_a->target[c_i] < len_b / 2)
+			while (i++ < c_i)
+				stack_rotate_both(s_a, s_b, true);
+		else
+			while (i++ < len_a - c_i)
+				stack_reverse_rotate_both(s_a, s_b, true);
+		c_i -= i; */
 	put_target_on_top_a(s_a, s_b, c_i);
 	stack_push_to(s_a, s_b, true);
 }

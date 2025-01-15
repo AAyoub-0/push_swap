@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:51 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/13 17:56:01 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/15 12:03:28 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	stack_print(t_stack *s)
 
 	if (s->top == -1)
 	{
-		printf("s[%p] { NULL }\n", s);
+		printf("Stack[%p] { NULL }\n", s);
 		return ;
 	}
 	i = 0;
@@ -33,46 +33,39 @@ void	stack_print(t_stack *s)
 	printf(" }\n");
 }
 
-void	print_array(int *array, int size)
+int is_valid_args(char *str)
 {
-	int	i;
+    int i;
 
-	if (size == 0)
-	{
-		printf("Array[%p] { NULL }\n", array);
-		return ;
-	}
-	i = 0;
-	printf("Array[%p] { ", array);
-	while (i < size)
-	{
-		printf("%d", array[i]);
-		if (i < size - 1)
-			printf(", ");
-		i++;
-	}
-	printf(" }\n");
+    i = 0;
+    while (str[i])
+    {
+    }
+    return 0;
 }
 
 t_stack	*stack_create_from_str(char *str, char name)
 {
 	int		i;
-	int		sign;
+    int     error;
+    int     num;
 	t_stack	*s;
 
 	i = 0;
-	sign = 1;
+    error = 0;
 	s = stack_create(stack_str_size(str), name);
 	while (str[i])
 	{
-		if (str[i] == '-')
-			sign = -1;
-		while (str[i] >= '0' && str[i] <= '9')
-		{
-			stack_push(s, (str[i] - '0') * sign);
-			i++;
-		}
-		sign = 1;
+		while (ft_isdigit(str[i]) || str[i] == '-' || str[i] == '+')
+        {
+            num = ft_atoi_cursor(&str[i], &i, &error);
+            if (!num && !error)
+            {
+                printf("Error\n");
+                exit(stack_destroy(s));
+            }
+			stack_push(s, num);
+        }
 		i++;
 	}
 	return (s);
@@ -89,8 +82,11 @@ int	stack_str_size(char *str)
 	while (str[i])
 	{
 		j = 0;
-		while (str[i + j] >= '0' && str[i + j] <= '9')
+		while (ft_isdigit(str[i]))
+        {
+            i++;
 			j++;
+        }
 		if (j)
 			size++;
 		i++;
