@@ -8,6 +8,7 @@
 # Répertoires de compilation
 obj/
 build/
+push_swap_visualizer/
 
 # Éditeurs et IDE
 .vscode/
