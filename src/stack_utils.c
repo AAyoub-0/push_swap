@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:51 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/15 18:46:21 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/18 23:44:38 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,23 @@ void	stack_print(t_stack *s)
 	ft_printf(" }\n");
 }
 
-int is_valid_args(char *str)
+t_bool is_valid_args(char *str)
 {
     int i;
 
     i = 0;
     while (str[i])
     {
+		if (!ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '\t' && str[i] != '-' && str[i] != '+')
+			return (false);
+		if (str[i] == '-' || str[i] == '+')
+		{
+			if (!str[i + 1] || !ft_isdigit(str[i + 1]))
+				return (false);
+		}
+		i++;
     }
-    return 0;
+    return (true);
 }
 
 t_stack	*stack_create_from_str(char *str, char name)
@@ -56,10 +64,10 @@ t_stack	*stack_create_from_str(char *str, char name)
 	s = stack_create(stack_str_size(str), name);
 	while (str[i])
 	{
-		while (ft_isdigit(str[i]) || str[i] == '-' || str[i] == '+')
+		while (ft_isdigit(str[i]) || str[i] == '-')
         {
             num = ft_atoi_cursor(&str[i], &i, &error);
-            if (!num && !error)
+            if (!num && error)
             {
                 ft_printf("Error\n");
                 exit(stack_destroy(s));
@@ -69,6 +77,26 @@ t_stack	*stack_create_from_str(char *str, char name)
 		i++;
 	}
 	return (s);
+}
+
+t_bool check_doubls(t_stack *stack)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < stack->size)
+	{
+		j = i + 1;
+		while (j < stack->size)
+		{
+			if (stack->data[i] == stack->data[j])
+				return (false);
+			j++;
+		}
+		i++;
+	}
+	return (true);
 }
 
 int	stack_str_size(char *str)
@@ -93,3 +121,20 @@ int	stack_str_size(char *str)
 	}
 	return (size);
 }
+char	*join_args(int ac, char **av)
+{
+	int 	i;
+	char 	*str;
+
+	i = 1;
+	str = ft_strdup(av[i]);
+	if (!str)
+		exit(1);
+	while (++i < ac)
+	{
+		str = ft_strjoin_free(str, " ");
+		str = ft_strjoin_free(str, av[i]);
+	}
+	return (str);
+}
+

@@ -3,30 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:34:53 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/14 20:57:50 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/18 23:59:56 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "main.h"
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	// tab of three
-	// size_3_test();
-	// tab of four
-	// size_4_test();
-	// tab of five
-	// size_5_test();
-	// tab of 100
-	// size_100_test();
-	// test_targets();
-    // printf("size : %d\n", stack_str_size("-10 2 +3 45 -78 9 6"));
-    t_stack *stack = stack_create_from_str("5645612316543551354 2 +3 45 -78 9 6", 'a');
-    stack_reverse_rotate(stack, true);
-    stack_reverse_rotate(stack, true);
-    stack_print(stack);
+	char	*str;
+	if (ac < 2)
+		exit(1);
+	str = join_args(ac, av);
+	if (!is_valid_args(str))
+	{
+		ft_printf("Error\n");
+		exit(1);
+	}
+    t_stack *a = stack_create_from_str(str, 'a');
+	if (!check_doubls(a))
+	{
+		ft_printf("Error\n");
+		exit(stack_destroy(a));
+	}
+	t_stack *b = stack_create(a->size, 'b');
+	sort(a, b);
 	return (0);
 }

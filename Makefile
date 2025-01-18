@@ -35,7 +35,7 @@ OBJ 		= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ) $(HEAD) $(SRC) Makefile
+$(NAME): $(LIBFT) $(OBJ) $(HEAD) $(SRC) Makefile main.c
 	$(CC) main.c $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEAD) Makefile | $(OBJ_DIR)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:13:55 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/15 15:11:26 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/18 23:41:15 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,18 @@ void		stack_pop(t_stack *stack);
 void		stack_delete(t_stack *stack, int index);
 int		    stack_destroy(t_stack *stack);
 
+t_bool 		is_valid_args(char *str);
+t_bool 		check_doubls(t_stack *stack);
 void		stack_print(t_stack *stack);
 t_stack		*stack_create_from_str(char *str, char name);
+char		*join_args(int ac, char **av);
 int			stack_str_size(char *str);
 
 void		stack_swap(t_stack *stack, t_bool print);
 void		stack_swap_both(t_stack *stack_a, t_stack *stack_b, t_bool print);
 
 void		stack_push(t_stack *stack, int value);
+void		stack_push_first(t_stack *s, int value);
 void		stack_push_array(t_stack *stack, int *array, int size);
 void		stack_push_to(t_stack *stack_from, t_stack *stack_to, t_bool print);
 
