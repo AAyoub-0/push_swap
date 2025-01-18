@@ -9,6 +9,7 @@
 obj/
 build/
 push_swap_visualizer/
+push_swap_tester/
 
 # Éditeurs et IDE
 .vscode/
@@ -17,3 +18,5 @@ push_swap_visualizer/
 *~
 
 push_swap
+*.ini
+*checker*
