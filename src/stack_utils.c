@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:51 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/18 23:44:38 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/20 17:23:05 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ t_stack	*stack_create_from_str(char *str, char name)
         }
 		i++;
 	}
+    free(str);
 	return (s);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:34:53 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/18 23:59:56 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/20 17:22:20 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,8 @@ int	main(int ac, char **av)
 	}
 	t_stack *b = stack_create(a->size, 'b');
 	sort(a, b);
+    stack_print(a);
+    stack_destroy(a);
+    stack_destroy(b);
 	return (0);
 }
