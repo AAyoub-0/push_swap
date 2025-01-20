@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:34:53 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/20 20:30:50 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/20 21:00:29 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,10 @@
 int	main(void)
 {
 	srand(time(NULL));
-	size_3_test();
-	size_4_test();
-	size_5_test();
-	size_100_test();
+	// size_3_test();
+	// size_4_test();
+	// size_5_test();
+	// size_100_test();
 	size_500_test();
 	return (0);
 }

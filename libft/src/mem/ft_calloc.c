@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 16:01:57 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/15 13:15:57 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/20 22:05:19 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,18 @@ void	*ft_calloc(size_t nmemb, size_t size)
 		return (NULL);
 	ft_memset(array, 0, nmemb * size);
 	return (array);
+}
+
+void *ft_realloc(void *ptr, size_t size)
+{
+	void	*new_ptr;
+
+	if (ptr == NULL)
+		return (ft_calloc(1, size));
+	new_ptr = ft_calloc(1, size);
+	if (new_ptr == NULL)
+		return (NULL);
+	ft_memcpy(new_ptr, ptr, size);
+	free(ptr);
+	return (new_ptr);
 }

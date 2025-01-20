@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 03:37:11 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/20 20:21:19 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/20 22:19:40 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,67 @@ void generate_unique_numbers(int *array, int size, int min, int max) {
     }
 }
 
-void    sort_test(char *test, int size, int *array)
+void filter_output(const char *output, int *num_i) {
+    // Liste des mots à filtrer
+    const char *keywords[] = {"ra", "rb", "rr", "sa", "sb", "pa", "pb", "rra", "rrb", "rrr"};
+    size_t keywords_count = sizeof(keywords) / sizeof(keywords[0]);
+    int print_line = 1;
+
+    // Vérifie si une ligne contient un des mots-clés
+    for (size_t i = 0; i < keywords_count; i++) {
+        if (ft_strnstr(output, keywords[i], ft_strlen(keywords[i])) != NULL) {
+            (*num_i)++;
+            print_line = 0; // Ne pas afficher la ligne
+            break;
+        }
+    }
+
+    if (print_line) {
+        printf("%s", output); // Affiche la ligne si elle ne contient pas de mots-clés
+    }
+}
+
+void run_and_filter(t_bool (*test_function)(char *, int, int*), char *name, int size, int* array, int **i_num_total) {
+    // Sauvegarde stdout
+    int stdout_copy = dup(fileno(stdout));
+    int num_i = 0;
+
+    // Redirige stdout vers un fichier temporaire
+    FILE *tmp = tmpfile();
+    if (!tmp) {
+        perror("tmpfile");
+        return;
+    }
+
+    int tmp_fd = fileno(tmp);
+    dup2(tmp_fd, fileno(stdout));
+
+    // Exécute la fonction de test
+    test_function(name, size, array);
+
+    // Restaure stdout
+    fflush(stdout);
+    dup2(stdout_copy, fileno(stdout));
+    close(stdout_copy);
+
+    // Lit et filtre le contenu du fichier temporaire
+    rewind(tmp);
+    char buffer[1024];
+    while (fgets(buffer, sizeof(buffer), tmp)) {
+        filter_output(buffer, &num_i);
+    }
+    printf("\033[0;33mNumber of instructions: %d\033[0m\n", num_i);
+    int test_num = ft_atoi(name + 5);
+    (*i_num_total)[test_num - 1] = num_i;
+    
+    fclose(tmp);
+}
+
+t_bool    sort_test(char *test, int size, int *array)
 {
     t_stack *stack_a = stack_create(size, 'a');
     t_stack *stack_b = stack_create(size, 'b');
+    t_bool  success = true;
     stack_push_array(stack_a, array, size);
 
     stack_print(stack_a);
@@ -59,9 +116,13 @@ void    sort_test(char *test, int size, int *array)
     if  (is_sorted(stack_a) && stack_b->top == -1 && stack_a->top == size - 1) 
         printf("\033[0;32m%s OK\033[0m\n", test);
     else
+    {
+        success = false;
         printf("\033[0;31m%s KO\033[0m\n", test);
+    }
     stack_destroy(stack_a);
     stack_destroy(stack_b);
+    return (success);
 }
 
 void    size_3_test()
@@ -246,8 +307,37 @@ void    size_500_test()
 {
     printf("SIZE OF 500\n");
     int array[500];
+    int test = 10;
+    int *i_num_total = malloc(sizeof(int) * test);
     generate_unique_numbers(array, 500, 1, 500);
-    sort_test("TEST 1", 500, array);
+    run_and_filter(sort_test, "TEST 1", 500, array, &i_num_total);
+    generate_unique_numbers(array, 500, -250, 250);
+    run_and_filter(sort_test, "TEST 2", 500, array, &i_num_total);
+    generate_unique_numbers(array, 500, -100, 500);
+    run_and_filter(sort_test, "TEST 3", 500, array, &i_num_total);
+    generate_unique_numbers(array, 500, -500, 500);
+    run_and_filter(sort_test, "TEST 4", 500, array, &i_num_total);
+    generate_unique_numbers(array, 500, -1000, 1000);
+    run_and_filter(sort_test, "TEST 5", 500, array, &i_num_total);
+    generate_unique_numbers(array, 500, -2500, 2500);
+    run_and_filter(sort_test, "TEST 6", 500, array, &i_num_total);
+    generate_unique_numbers(array, 500, -5000, 5000);
+    run_and_filter(sort_test, "TEST 7", 500, array, &i_num_total);
+    generate_unique_numbers(array, 500, -10000, 10000);
+    run_and_filter(sort_test, "TEST 8", 500, array, &i_num_total);
+    generate_unique_numbers(array, 500, -25000, 25000);
+    run_and_filter(sort_test, "TEST 9", 500, array, &i_num_total);
+    generate_unique_numbers(array, 500, -50000, 50000);
+    run_and_filter(sort_test, "TEST 10", 500, array, &i_num_total);
+    int avg = 0;
+    ft_print_array_int(i_num_total, test);
+    for (int i = 0; i < test; i++)
+        avg += i_num_total[i];
+    avg /= test;
+    if (avg < 5500)
+        printf("\033[0;32mAVERAGE NUMBER OF INSTRUCTIONS: %d\033[0m\n", avg);
+    else
+        printf("\033[0;31mAVERAGE NUMBER OF INSTRUCTIONS: %d\033[0m\n", avg);
     printf("\n");
 }
 
