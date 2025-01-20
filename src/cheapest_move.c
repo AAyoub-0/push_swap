@@ -6,11 +6,11 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:35:15 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/19 02:50:00 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/20 23:51:10 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../main.h"
+#include "../push_swap.h"
 
 int	get_max_index(t_stack *s)
 {
@@ -85,12 +85,12 @@ int	get_cheapest_index(t_stack *s, int o_s_len)
 
 void	push_cheapest_a(t_stack *s_a, t_stack *s_b)
 {
-	int	i;
-	int	len_a;
+	// int	i;
+	// int	len_a;
 	int	len_b;
 	int	c_i;
 
-	len_a = s_a->top + 1;
+	// len_a = s_a->top + 1;
 	len_b = s_b->top + 1;
 	c_i = get_cheapest_index(s_a, len_b);
 	/*     i = 0;
@@ -107,13 +107,13 @@ void	push_cheapest_a(t_stack *s_a, t_stack *s_b)
 
 void	push_cheapest_b(t_stack *s_b, t_stack *s_a)
 {
-	int	i;
+	// int	i;
 	int	len_a;
-	int	len_b;
+	// int	len_b;
 	int	c_i;
 
 	len_a = s_a->top + 1;
-	len_b = s_b->top + 1;
+	// len_b = s_b->top + 1;
 	c_i = get_cheapest_index(s_b, len_a);
 	/* 	i = 0;
 		if (c_i < len_b / 2 && s_b->target[c_i] < len_a

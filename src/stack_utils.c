@@ -6,11 +6,11 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:51 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/20 20:31:37 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/20 23:41:02 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../main.h"
+#include "../push_swap.h"
 
 void	stack_print(t_stack *s)
 {

@@ -6,11 +6,11 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:29:28 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/20 20:19:01 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/20 23:41:02 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../main.h"
+#include "../push_swap.h"
 
 void	set_target_a(t_stack *s_a, t_stack *s_b)
 {

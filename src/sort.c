@@ -6,11 +6,11 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 17:45:38 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/18 23:58:22 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/20 23:41:02 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../main.h"
+#include "../push_swap.h"
 
 t_bool	is_sorted(t_stack *s)
 {

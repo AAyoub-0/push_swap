@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   stack_push.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:46 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/13 17:57:18 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/20 23:41:02 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../main.h"
+#include "../push_swap.h"
 
 void	stack_push(t_stack *s, int value)
 {

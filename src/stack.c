@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:55 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/15 11:56:48 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/20 23:41:02 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../main.h"
+#include "../push_swap.h"
 
 t_stack	*stack_create(int size, char name)
 {

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.h                                             :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:13:55 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/20 23:27:19 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/20 23:44:11 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void		sort_two(t_stack *stack);
 void		sort_three(t_stack *stack);
 void		sort_four(t_stack *stack_a, t_stack *stack_b);
 void		sort_five(t_stack *stack_a, t_stack *stack_b);
+void		sort_large(t_stack *stack_a, t_stack *stack_b);
 
 void		set_target_a(t_stack *stack_a, t_stack *stack_b);
 void		set_target_b(t_stack *stack_b, t_stack *stack_a);
@@ -81,15 +82,5 @@ int			get_min_index(t_stack *stack);
 int			get_cheapest_index(t_stack *stack, int o_stack_len);
 void		push_cheapest_a(t_stack *stack_a, t_stack *stack_b);
 void		push_cheapest_b(t_stack *stack_b, t_stack *stack_a);
-
-void		sort_large(t_stack *stack_a, t_stack *stack_b);
-
-t_bool		sort_test(char *test, int size, int *array);
-void		size_4_test(void);
-void		size_3_test(void);
-void		size_5_test(void);
-void		size_100_test(int test);
-void    	size_500_test(int test);
-void    	size_n_test(int size, int test);
 
 #endif

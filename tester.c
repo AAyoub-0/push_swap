@@ -6,11 +6,11 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 03:37:11 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/20 23:37:43 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/21 00:00:39 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../main.h"
+#include "push_swap.h"
 # include <stdio.h>
 # include <time.h>
 
@@ -357,4 +357,28 @@ void    size_n_test(int size, int test)
     else
         printf("\033[0;31mAVERAGE NUMBER OF INSTRUCTIONS: %d\033[0m\n", avg);
     printf("\n");
+}
+
+int	main(int ac, char **av)
+{
+	if (ac != 3)
+	{
+		printf("Usage: %s <number of tests> <size of the array>\n", av[0]);
+		exit(1);
+	}
+	int test = ft_atoi(av[1]);
+	int size = ft_atoi(av[2]);
+	if (size == 3)
+		size_3_test();
+	else if (size == 4)
+		size_4_test();
+	else if (size == 5)
+		size_5_test();
+	else if (size == 100)
+		size_100_test(test);
+	else if (size == 500)
+		size_500_test(test);
+	else
+		size_n_test(size, test);
+	return (0);
 }
