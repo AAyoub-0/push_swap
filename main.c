@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:34:53 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/20 21:00:29 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/20 23:27:41 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,28 @@
 // }
 
 # include <time.h>
-int	main(void)
+int	main(int ac, char **av)
 {
+	// first arg is the number of tests to run and the second is the size of the array
 	srand(time(NULL));
-	// size_3_test();
-	// size_4_test();
-	// size_5_test();
-	// size_100_test();
-	size_500_test();
+	if (ac != 3)
+	{
+		printf("Usage: %s <number of tests> <size of the array>\n", av[0]);
+		exit(1);
+	}
+	int test = ft_atoi(av[1]);
+	int size = ft_atoi(av[2]);
+	if (size == 3)
+		size_3_test();
+	else if (size == 4)
+		size_4_test();
+	else if (size == 5)
+		size_5_test();
+	else if (size == 100)
+		size_100_test(test);
+	else if (size == 500)
+		size_500_test(test);
+	else
+		size_n_test(size, test);
 	return (0);
 }

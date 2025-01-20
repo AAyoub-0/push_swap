@@ -6,7 +6,7 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:13:55 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/20 20:58:50 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/20 23:27:19 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ t_bool		sort_test(char *test, int size, int *array);
 void		size_4_test(void);
 void		size_3_test(void);
 void		size_5_test(void);
-void		size_100_test(void);
-void    	size_500_test(void);
-void		test_targets(void);
+void		size_100_test(int test);
+void    	size_500_test(int test);
+void    	size_n_test(int size, int test);
 
 #endif

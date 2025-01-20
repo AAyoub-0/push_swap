@@ -6,11 +6,12 @@
 /*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 03:37:11 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/20 22:19:40 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/20 23:37:43 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../main.h"
+# include <stdio.h>
 # include <time.h>
 
 void generate_unique_numbers(int *array, int size, int min, int max) {
@@ -103,7 +104,6 @@ t_bool    sort_test(char *test, int size, int *array)
     t_bool  success = true;
     stack_push_array(stack_a, array, size);
 
-    stack_print(stack_a);
     if (size == 3)
         sort_three(stack_a);
     else if (size == 4)
@@ -112,13 +112,13 @@ t_bool    sort_test(char *test, int size, int *array)
         sort_five(stack_a, stack_b);
     else
         sort_large(stack_a, stack_b);
-    stack_print(stack_a);
     if  (is_sorted(stack_a) && stack_b->top == -1 && stack_a->top == size - 1) 
         printf("\033[0;32m%s OK\033[0m\n", test);
     else
     {
         success = false;
         printf("\033[0;31m%s KO\033[0m\n", test);
+        exit(1);
     }
     stack_destroy(stack_a);
     stack_destroy(stack_b);
@@ -294,43 +294,38 @@ void    size_5_test()
     printf("\n");
 }
 
-void    size_100_test()
+void    size_100_test(int test)
 {
     printf("SIZE OF 100\n");
     int array[100];
-    generate_unique_numbers(array, 100, 1, 100);
-    sort_test("TEST 1", 100, array);
+    int *i_num_total = malloc(sizeof(int) * test);
+    for (int i = 0; i < test; i++)
+    {
+        generate_unique_numbers(array, 100, -50000, 50000);
+        run_and_filter(sort_test, ft_strjoin("TEST ", ft_itoa(i + 1)), 100, array, &i_num_total);
+    }
+    int avg = 0;
+    for (int i = 0; i < test; i++)
+        avg += i_num_total[i];
+    avg /= test;
+    if (avg < 700)
+        printf("\033[0;32mAVERAGE NUMBER OF INSTRUCTIONS: %d\033[0m\n", avg);
+    else
+        printf("\033[0;31mAVERAGE NUMBER OF INSTRUCTIONS: %d\033[0m\n", avg);
     printf("\n");
 }
 
-void    size_500_test()
+void    size_500_test(int test)
 {
     printf("SIZE OF 500\n");
     int array[500];
-    int test = 10;
     int *i_num_total = malloc(sizeof(int) * test);
-    generate_unique_numbers(array, 500, 1, 500);
-    run_and_filter(sort_test, "TEST 1", 500, array, &i_num_total);
-    generate_unique_numbers(array, 500, -250, 250);
-    run_and_filter(sort_test, "TEST 2", 500, array, &i_num_total);
-    generate_unique_numbers(array, 500, -100, 500);
-    run_and_filter(sort_test, "TEST 3", 500, array, &i_num_total);
-    generate_unique_numbers(array, 500, -500, 500);
-    run_and_filter(sort_test, "TEST 4", 500, array, &i_num_total);
-    generate_unique_numbers(array, 500, -1000, 1000);
-    run_and_filter(sort_test, "TEST 5", 500, array, &i_num_total);
-    generate_unique_numbers(array, 500, -2500, 2500);
-    run_and_filter(sort_test, "TEST 6", 500, array, &i_num_total);
-    generate_unique_numbers(array, 500, -5000, 5000);
-    run_and_filter(sort_test, "TEST 7", 500, array, &i_num_total);
-    generate_unique_numbers(array, 500, -10000, 10000);
-    run_and_filter(sort_test, "TEST 8", 500, array, &i_num_total);
-    generate_unique_numbers(array, 500, -25000, 25000);
-    run_and_filter(sort_test, "TEST 9", 500, array, &i_num_total);
-    generate_unique_numbers(array, 500, -50000, 50000);
-    run_and_filter(sort_test, "TEST 10", 500, array, &i_num_total);
+    for (int i = 0; i < test; i++)
+    {
+        generate_unique_numbers(array, 500, -50000, 50000);
+        run_and_filter(sort_test, ft_strjoin("TEST ", ft_itoa(i + 1)), 500, array, &i_num_total);
+    }
     int avg = 0;
-    ft_print_array_int(i_num_total, test);
     for (int i = 0; i < test; i++)
         avg += i_num_total[i];
     avg /= test;
@@ -341,27 +336,25 @@ void    size_500_test()
     printf("\n");
 }
 
-void    test_targets()
+void    size_n_test(int size, int test)
 {
-    printf("\n");
-    printf("Test of targets\n");
-    int size = 500;
-    t_stack *stack_a = stack_create(size, 'a');
-    t_stack *stack_b = stack_create(size, 'b');
+    printf("SIZE OF %d\n", size);
     int array[size];
-    generate_unique_numbers(array, size, 1, size);
-    stack_push_array(stack_a, array, size);
-    
-    stack_print(stack_a);
-    stack_print(stack_b);
-    sort_large(stack_a, stack_b);
-    stack_print(stack_a);
-    stack_print(stack_b);
-
-    if (is_sorted(stack_a))
-        printf("\033[0;32mTEST OK\033[0m\n");
+    int *i_num_total = malloc(sizeof(int) * test);
+    for (int i = 0; i < test; i++)
+    {
+        generate_unique_numbers(array, size, -50000, 50000);
+        run_and_filter(sort_test, ft_strjoin("TEST ", ft_itoa(i + 1)), size, array, &i_num_total);
+    }
+    int avg = 0;
+    for (int i = 0; i < test; i++)
+        avg += i_num_total[i];
+    avg /= test;
+    if (size == 100 && avg < 700)
+        printf("\033[0;32mAVERAGE NUMBER OF INSTRUCTIONS: %d\033[0m\n", avg);
+    else if (size == 500 && avg < 5500)
+        printf("\033[0;32mAVERAGE NUMBER OF INSTRUCTIONS: %d\033[0m\n", avg);
     else
-        printf("\033[0;31mTEST KO\033[0m\n");
-
+        printf("\033[0;31mAVERAGE NUMBER OF INSTRUCTIONS: %d\033[0m\n", avg);
     printf("\n");
 }
