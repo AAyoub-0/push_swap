@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:51 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/20 17:23:05 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:33:06 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ t_stack	*stack_create_from_str(char *str, char name)
 	s = stack_create(stack_str_size(str), name);
 	while (str[i])
 	{
-		while (ft_isdigit(str[i]) || str[i] == '-')
+		if (ft_isdigit(str[i]) || str[i] == '-')
         {
             num = ft_atoi_cursor(&str[i], &i, &error);
             if (!num && error)
