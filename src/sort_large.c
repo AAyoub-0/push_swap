@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_large.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 17:54:16 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/13 17:58:51 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/20 20:15:41 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	sort_large(t_stack *s_a, t_stack *s_b)
 {
 	int	size_a;
 
-	size_a = (*s_a).size;
+	size_a = (*s_a).top + 1;
 	if (size_a-- > 5 && !is_sorted(s_a))
 		stack_push_to(s_a, s_b, true);
 	if (size_a-- > 5 && !is_sorted(s_a))

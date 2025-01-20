@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tester.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 03:37:11 by aayoub            #+#    #+#             */
-/*   Updated: 2025/01/13 14:31:46 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/20 20:21:19 by aayoub           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,6 +239,15 @@ void    size_100_test()
     int array[100];
     generate_unique_numbers(array, 100, 1, 100);
     sort_test("TEST 1", 100, array);
+    printf("\n");
+}
+
+void    size_500_test()
+{
+    printf("SIZE OF 500\n");
+    int array[500];
+    generate_unique_numbers(array, 500, 1, 500);
+    sort_test("TEST 1", 500, array);
     printf("\n");
 }
 
