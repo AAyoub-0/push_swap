@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:58 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/21 13:22:00 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:50:26 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	stack_rotate(t_stack *s, t_bool print)
 	}
 	s->data[s->top] = tmp;
 	if (print)
-		printf("r%c\n", s->name[0]);
+		ft_printf("r%c\n", s->name[0]);
 }
 
 void	stack_reverse_rotate(t_stack *s, t_bool print)
@@ -47,7 +47,7 @@ void	stack_reverse_rotate(t_stack *s, t_bool print)
 	}
 	s->data[0] = tmp;
 	if (print)
-		printf("rr%c\n", s->name[0]);
+		ft_printf("rr%c\n", s->name[0]);
 }
 
 void	stack_rotate_both(t_stack *s_a, t_stack *s_b, t_bool print)
@@ -55,7 +55,7 @@ void	stack_rotate_both(t_stack *s_a, t_stack *s_b, t_bool print)
 	stack_rotate(s_a, 0);
 	stack_rotate(s_b, 0);
 	if (print)
-		printf("rr\n");
+		ft_printf("rr\n");
 }
 
 void	stack_reverse_rotate_both(t_stack *s_a, t_stack *s_b, t_bool print)
@@ -63,5 +63,5 @@ void	stack_reverse_rotate_both(t_stack *s_a, t_stack *s_b, t_bool print)
 	stack_reverse_rotate(s_a, 0);
 	stack_reverse_rotate(s_b, 0);
 	if (print)
-		printf("rrr\n");
+		ft_printf("rrr\n");
 }

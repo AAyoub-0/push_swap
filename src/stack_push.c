@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:46 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/21 13:21:48 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:50:15 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,5 @@ void	stack_push_to(t_stack *s_from, t_stack *s_to, t_bool print)
 	stack_push_first(s_to, s_from->data[0]);
 	stack_delete(s_from, 0);
 	if (print)
-		printf("p%c\n", s_to->name[0]);
+		ft_printf("p%c\n", s_to->name[0]);
 }
