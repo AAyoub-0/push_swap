@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:13:55 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/20 23:44:11 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/21 13:24:57 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAIN_H
-# define MAIN_H
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include "./libft/libft.h"
 # include <stdarg.h>
@@ -37,10 +37,10 @@ typedef enum e_bool
 t_stack		*stack_create(int size, char name);
 void		stack_pop(t_stack *stack);
 void		stack_delete(t_stack *stack, int index);
-int		    stack_destroy(t_stack *stack);
+int			stack_destroy(t_stack *stack);
 
-t_bool 		is_valid_args(char *str);
-t_bool 		check_doubls(t_stack *stack);
+t_bool		is_valid_args(char *str);
+t_bool		check_doubls(t_stack *stack);
 void		stack_print(t_stack *stack);
 t_stack		*stack_create_from_str(char *str, char name);
 char		*join_args(int ac, char **av);

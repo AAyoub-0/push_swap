@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_push.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:46 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/20 23:41:02 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/21 13:21:48 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	stack_push_array(t_stack *s, int *array, int size)
 		i++;
 	}
 }
+
 void	stack_push_to(t_stack *s_from, t_stack *s_to, t_bool print)
 {
 	if (s_from->top == -1)

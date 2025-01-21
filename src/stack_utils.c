@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:51 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/21 13:06:00 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/21 13:17:47 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,15 @@ void	stack_print(t_stack *s)
 	ft_printf(" }\n");
 }
 
-t_bool is_valid_args(char *str)
+t_bool	is_valid_args(char *str)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i])
-    {
-		if (!ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '\t' && str[i] != '-' && str[i] != '+')
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]) && str[i] != ' ' && str[i] != '\t'
+			&& str[i] != '-' && str[i] != '+')
 			return (false);
 		if (str[i] == '-' || str[i] == '+')
 		{
@@ -48,39 +49,11 @@ t_bool is_valid_args(char *str)
 				return (false);
 		}
 		i++;
-    }
-    return (true);
-}
-
-t_stack	*stack_create_from_str(char *str, char name)
-{
-	int		i;
-    int     error;
-    int     num;
-	t_stack	*s;
-
-	i = 0;
-    error = 0;
-	s = stack_create(stack_str_size(str), name);
-	while (str[i])
-	{
-		if (ft_isdigit(str[i]) || str[i] == '-')
-        {
-            num = ft_atoi_cursor(&str[i], &i, &error);
-            if (!num && error)
-            {
-                ft_printf("Error\n");
-                exit(stack_destroy(s));
-            }
-			stack_push(s, num);
-        }
-		i++;
 	}
-    free(str);
-	return (s);
+	return (true);
 }
 
-t_bool check_doubls(t_stack *stack)
+t_bool	check_doubls(t_stack *stack)
 {
 	int	i;
 	int	j;
@@ -112,10 +85,10 @@ int	stack_str_size(char *str)
 	{
 		j = 0;
 		while (ft_isdigit(str[i]))
-        {
-            i++;
+		{
+			i++;
 			j++;
-        }
+		}
 		if (j)
 			size++;
 		i++;
@@ -125,8 +98,8 @@ int	stack_str_size(char *str)
 
 char	*join_args(int ac, char **av)
 {
-	int 	i;
-	char 	*str;
+	int		i;
+	char	*str;
 
 	i = 1;
 	str = ft_strdup(av[i]);

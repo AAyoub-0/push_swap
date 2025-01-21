@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 15:27:51 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/18 22:11:11 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/21 13:23:21 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,21 +66,21 @@ int	ft_atoi_cursor(char *nptr, int *cursor, int *error)
 	i = 0;
 	result = 0;
 	sign = 1;
-    if (nptr[i] == '-')
+	if (nptr[i] == '-')
 	{
-        sign *= -1;
-    	i++;
+		sign *= -1;
+		i++;
 	}
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
-        if (is_toolarge(result, nptr[i]) <= 0)
-        {
-            (*error) = 1;
+		if (is_toolarge(result, nptr[i]) <= 0)
+		{
+			(*error) = 1;
 			return (0);
-        }
+		}
 		result = result * 10 + nptr[i] - '0';
 		i++;
 	}
-    (*cursor) = (*cursor) + i;
+	(*cursor) = (*cursor) + i;
 	return (result * sign);
 }

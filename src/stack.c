@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:55 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/20 23:41:02 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/21 13:17:41 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,34 @@ t_stack	*stack_create(int size, char name)
 	stack->top = -1;
 	stack->size = size;
 	return (stack);
+}
+
+t_stack	*stack_create_from_str(char *str, char name)
+{
+	int		i;
+	int		error;
+	int		num;
+	t_stack	*s;
+
+	i = 0;
+	error = 0;
+	s = stack_create(stack_str_size(str), name);
+	while (str[i])
+	{
+		if (ft_isdigit(str[i]) || str[i] == '-')
+		{
+			num = ft_atoi_cursor(&str[i], &i, &error);
+			if (!num && error)
+			{
+				ft_printf("Error\n");
+				exit(stack_destroy(s));
+			}
+			stack_push(s, num);
+		}
+		i++;
+	}
+	free(str);
+	return (s);
 }
 
 void	stack_pop(t_stack *s)
@@ -52,7 +80,7 @@ int	stack_destroy(t_stack *s)
 {
 	free(s->data);
 	free(s->name);
-    free(s->target);
+	free(s->target);
 	free(s);
-    return (0);
+	return (0);
 }
