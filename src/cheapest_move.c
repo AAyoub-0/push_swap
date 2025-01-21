@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:35:15 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/21 17:22:59 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/21 18:56:46 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,18 +99,44 @@ void	push_cheapest_a(t_stack *s_a, t_stack *s_b)
     //     while (i < c_i && i < s_a->target[c_i])
     //     {
     //         stack_rotate_both(s_a, s_b, true);
-    //         update_targets(s_a, 1);
     //         i++;
     //     }
+    //     s_a->target[c_i] += i;
+    //     c_i += i;
     // }
+    // i = 0;
     // if ((c_i >= len_a / 2 || c_i + s_a->target[c_i] >= len_a / 2) && (s_a->target[c_i] >= len_b / 2 || s_a->target[c_i] + c_i >= len_b / 2))
     // {
-    //     while (c_i > len_a && i < len_b - s_a->target[c_i])
+    //     while (i < len_a - c_i && i < len_b - s_a->target[c_i])
     //     {
     //         stack_reverse_rotate_both(s_a, s_b, true);
-    //         update_targets(s_a, -1);
     //         i++;
     //     }
+    //     s_a->target[c_i] -= i;
+    //     c_i -= i;
+    // }
+    // if ((c_i < len_a / 2) && (s_a->target[c_i] < len_b / 2))
+    // {
+    //     while (i < c_i && i < s_a->target[c_i])
+    //     {
+    //         stack_rotate_both(s_a, s_b, true);
+    //         i++;
+    //     }
+    //     // need to update the c_i
+    //     s_a->target[c_i] += i;
+    //     c_i += i;
+    // }
+    // i = 0;
+    // if ((c_i >= len_a / 2) && (s_a->target[c_i] >= len_b / 2))
+    // {
+    //     while (i < len_a - c_i && i < len_b - s_a->target[c_i])
+    //     {
+    //         stack_reverse_rotate_both(s_a, s_b, true);
+    //         i++;
+    //     }
+    //     // need to update the c_i
+    //     s_a->target[c_i] -= i;
+    //     c_i -= i;
     // }
     put_target_on_top_a(s_a, s_b, c_i);
 	stack_push_to(s_a, s_b, true);

@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:13:55 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/21 17:07:51 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/21 17:41:10 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void		put_target_on_top_a(t_stack *stack_a, t_stack *stack_b,
 				int cheapest_index);
 void		put_target_on_top_b(t_stack *stack_b, t_stack *stack_a,
 				int cheapest_index);
-void        update_targets(t_stack *s, int incr);
 
 int			get_max_index(t_stack *stack);
 int			get_min_index(t_stack *stack);
