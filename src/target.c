@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:29:28 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/21 14:01:35 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/21 17:07:25 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,4 +114,30 @@ void	put_target_on_top_b(t_stack *s_b, t_stack *s_a,
 	else
 		while (i++ < len_a - s_b->target[c_i])
 			stack_reverse_rotate(s_a, true);
+}
+void    update_targets(t_stack *s, int incr)
+{
+    int i;
+    int tmp;
+    
+    if (incr > 0)
+    {
+        i = 0;
+        tmp = s->target[0];
+        while (i <= s->top)
+        {
+            s->target[i] = s->target[i + 1];
+            i++;   
+        }
+        s->target[i] = tmp;
+        return ;
+    }
+    tmp = s->target[s->top];
+    i = s->top;
+    while (i > 0)
+    {
+        s->target[i] = s->target[i - 1];
+        i--;
+    }
+    s->target[i] = tmp;
 }

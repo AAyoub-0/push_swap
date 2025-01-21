@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:35:15 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/21 15:44:23 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/21 17:22:59 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,14 +99,16 @@ void	push_cheapest_a(t_stack *s_a, t_stack *s_b)
     //     while (i < c_i && i < s_a->target[c_i])
     //     {
     //         stack_rotate_both(s_a, s_b, true);
+    //         update_targets(s_a, 1);
     //         i++;
     //     }
     // }
-    // else if ((c_i >= len_a / 2 || c_i + s_a->target[c_i] >= len_a / 2) && (s_a->target[c_i] >= len_b / 2 || s_a->target[c_i] + c_i >= len_b / 2))
+    // if ((c_i >= len_a / 2 || c_i + s_a->target[c_i] >= len_a / 2) && (s_a->target[c_i] >= len_b / 2 || s_a->target[c_i] + c_i >= len_b / 2))
     // {
-    //     while (i < len_a - c_i && i < len_b - s_a->target[c_i])
+    //     while (c_i > len_a && i < len_b - s_a->target[c_i])
     //     {
     //         stack_reverse_rotate_both(s_a, s_b, true);
+    //         update_targets(s_a, -1);
     //         i++;
     //     }
     // }

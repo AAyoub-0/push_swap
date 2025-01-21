@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:49 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/21 15:51:50 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/21 17:18:24 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	stack_swap(t_stack *s, t_bool print)
 
 void	stack_swap_both(t_stack *s_a, t_stack *s_p, t_bool print)
 {
-	stack_swap(s_a, 0);
-	stack_swap(s_p, 0);
+	stack_swap(s_a, false);
+	stack_swap(s_p, false);
 	if (print)
 		ft_printf("ss\n");
 }
