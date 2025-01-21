@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:51 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/20 23:41:02 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/21 13:06:00 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ int	stack_str_size(char *str)
 	}
 	return (size);
 }
+
 char	*join_args(int ac, char **av)
 {
 	int 	i;
@@ -138,4 +139,3 @@ char	*join_args(int ac, char **av)
 	}
 	return (str);
 }
-
