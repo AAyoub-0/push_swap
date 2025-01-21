@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   target.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aayoub <aayoub@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:29:28 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/20 23:41:02 by aayoub           ###   ########.fr       */
+/*   Updated: 2025/01/21 13:52:10 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,8 @@ void	put_target_on_top_a(t_stack *s_a, t_stack *s_b,
 	int	len_b;
 
 	i = 0;
-	len_a = (*s_a).top + 1;
-	len_b = (*s_b).top + 1;
+	len_a = s_a->top + 1;
+	len_b = s_b->top + 1;
 	if (c_i < len_a / 2)
 		while (i++ < c_i)
 			stack_rotate(s_a, true);
