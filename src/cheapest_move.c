@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:35:15 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/21 13:22:36 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/21 15:44:23 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,12 +85,32 @@ int	get_cheapest_index(t_stack *s, int o_s_len)
 
 void	push_cheapest_a(t_stack *s_a, t_stack *s_b)
 {
+    int len_a;
 	int	len_b;
 	int	c_i;
+    int i;
 
+    i = 0;
+    len_a = s_a->top + 1;
 	len_b = s_b->top + 1;
 	c_i = get_cheapest_index(s_a, len_b);
-	put_target_on_top_a(s_a, s_b, c_i);
+    // if ((c_i < len_a / 2 || c_i - s_a->target[c_i] < len_a / 2) && (s_a->target[c_i] < len_b / 2 || s_a->target[c_i] - c_i < len_b / 2))
+    // {
+    //     while (i < c_i && i < s_a->target[c_i])
+    //     {
+    //         stack_rotate_both(s_a, s_b, true);
+    //         i++;
+    //     }
+    // }
+    // else if ((c_i >= len_a / 2 || c_i + s_a->target[c_i] >= len_a / 2) && (s_a->target[c_i] >= len_b / 2 || s_a->target[c_i] + c_i >= len_b / 2))
+    // {
+    //     while (i < len_a - c_i && i < len_b - s_a->target[c_i])
+    //     {
+    //         stack_reverse_rotate_both(s_a, s_b, true);
+    //         i++;
+    //     }
+    // }
+    put_target_on_top_a(s_a, s_b, c_i);
 	stack_push_to(s_a, s_b, true);
 }
 
