@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:13:55 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/21 17:41:10 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/26 21:44:48 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void		put_target_on_top_a(t_stack *stack_a, t_stack *stack_b,
 				int cheapest_index);
 void		put_target_on_top_b(t_stack *stack_b, t_stack *stack_a,
 				int cheapest_index);
+void		put_target_on_top(t_stack *a, t_stack *b, int c_i, int t_i);
 
 int			get_max_index(t_stack *stack);
 int			get_min_index(t_stack *stack);

@@ -10,6 +10,7 @@ obj/
 build/
 push_swap_visualizer/
 push_swap_tester/
+push-swap-tester/
 tester/
 
 # Éditeurs et IDE

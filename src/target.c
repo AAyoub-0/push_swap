@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   target.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:29:28 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/21 19:07:52 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/26 21:45:08 by ayoub            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,80 +65,36 @@ void	set_target_b(t_stack *s_b, t_stack *s_a)
 		i++;
 	}
 }
-
-void	put_target_on_top_a(t_stack *s_a, t_stack *s_b,
-		int c_i)
+void	rotate_one(t_stack *s, int s_i)
 {
 	int	i;
-	int	len_a;
-	int	len_b;
+	int	len;
 
 	i = 0;
-	len_a = s_a->top + 1;
-	len_b = s_b->top + 1;
-	if (c_i < len_a / 2)
-		while (i++ < c_i)
-			stack_rotate(s_a, true);
+	len = s->top + 1;
+	if (s_i < len / 2)
+		while (i++ < s_i)
+			stack_rotate(s, true);
 	else
-		while (i++ < len_a - c_i)
-			stack_reverse_rotate(s_a, true);
-	i = 0;
-	if (s_a->target[c_i] < len_b / 2)
-		while (i++ < s_a->target[c_i])
-			stack_rotate(s_b, true);
-	else
-		while (i++ < len_b - s_a->target[c_i])
-			stack_reverse_rotate(s_b, true);
+		while (i++ < len - s_i)
+			stack_reverse_rotate(s, true);
 }
 
-void	put_target_on_top_b(t_stack *s_b, t_stack *s_a,
-		int c_i)
+void	put_target_on_top(t_stack *a, t_stack *b, int c_i, int t_i)
 {
-	int	i;
-	int	len_a;
-	int	len_b;
-
-	i = 0;
-	len_a = s_a->top + 1;
-	len_b = s_b->top + 1;
-	if (c_i < len_b / 2)
-		while (i++ < c_i)
-			stack_rotate(s_b, true);
-	else
-		while (i++ < len_b - c_i)
-			stack_reverse_rotate(s_b, true);
-	i = 0;
-	if (s_b->target[c_i] < len_a / 2)
-		while (i++ < s_b->target[c_i])
-			stack_rotate(s_a, true);
-	else
-		while (i++ < len_a - s_b->target[c_i])
-			stack_reverse_rotate(s_a, true);
-}
-
-void    update_targets(t_stack *s, int incr)
-{
-    int i;
-    int tmp;
-    
-    if (incr > 0)
-    {
-        i = 0;
-        tmp = s->target[0];
-        while (i <= s->top)
-        {
-            s->target[i] = s->target[i + 1];
-            i++;   
-        }
-        s->target[i] = tmp;
-        return ;
-    }
-    tmp = s->target[s->top];
-    i = s->top;
-    while (i > 0)
-    {
-        s->target[i] = s->target[i - 1];
-        i--;
-    }
-    s->target[i] = tmp;
+	// need to optimize this function
+	while (c_i > 0 && t_i > 0)
+	{
+		stack_rotate_both(a, b, true);
+		c_i--;
+		t_i--;
+	}
+	while (c_i < a->top && t_i > b->top)
+	{
+		stack_reverse_rotate_both(a, b, true);
+		c_i++;
+		t_i++;
+	}
+	rotate_one(a, c_i);
+	rotate_one(b, t_i);
 }
