@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:55 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/21 13:17:41 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/28 18:11:50 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ t_stack	*stack_create_from_str(char *str, char name)
 			}
 			stack_push(s, num);
 		}
-		i++;
+		if (str[i])
+			i++;
 	}
 	free(str);
 	return (s);

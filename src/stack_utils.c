@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:51 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/21 13:17:47 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/28 18:12:01 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,14 +84,15 @@ int	stack_str_size(char *str)
 	while (str[i])
 	{
 		j = 0;
-		while (ft_isdigit(str[i]))
+		while (str[i] && ft_isdigit(str[i]))
 		{
 			i++;
 			j++;
 		}
 		if (j)
 			size++;
-		i++;
+		if (str[i])
+			i++;
 	}
 	return (size);
 }

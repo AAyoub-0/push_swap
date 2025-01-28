@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:58 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/28 17:42:41 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/28 18:11:40 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	stack_rotate(t_stack *s, t_bool print)
 		return ;
 	tmp = s->data[0];
 	i = 0;
-	while (i <= s->top)
+	while (i < s->top)
 	{
 		s->data[i] = s->data[i + 1];
 		i++;
