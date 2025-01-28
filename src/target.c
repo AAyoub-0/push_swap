@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   target.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:29:28 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/26 21:45:08 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/28 16:10:19 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,19 @@ void	rotate_one(t_stack *s, int s_i)
 
 void	put_target_on_top(t_stack *a, t_stack *b, int c_i, int t_i)
 {
+	int	len_a;
+	int	len_b;
+
+	len_a = a->top + 1;
+	len_b = b->top + 1;
 	// need to optimize this function
-	while (c_i > 0 && t_i > 0)
+	while (c_i < len_a / 2 && c_i > 0 && t_i < len_b / 2 && t_i > 0)
 	{
 		stack_rotate_both(a, b, true);
 		c_i--;
 		t_i--;
 	}
-	while (c_i < a->top && t_i > b->top)
+	while (c_i >= len_a / 2 && c_i < len_a && t_i >= len_b / 2 && t_i < len_b)
 	{
 		stack_reverse_rotate_both(a, b, true);
 		c_i++;
