@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:35:15 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/28 15:46:18 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/28 17:48:54 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	push_cheapest_a(t_stack *s_a, t_stack *s_b)
 {
 	int	len_b;
 	int	c_i;
-	
+
 	len_b = s_b->top + 1;
 	c_i = get_cheapest_index(s_a, len_b);
 	put_target_on_top(s_a, s_b, c_i, s_a->target[c_i]);
