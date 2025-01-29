@@ -6,7 +6,7 @@
 #    By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 17:00:10 by aayoub            #+#    #+#              #
-#    Updated: 2025/01/21 14:08:45 by aboumall         ###   ########.fr        #
+#    Updated: 2025/01/29 13:12:53 by aboumall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIBFT_DIR 	= 	./libft
 SRC_DIR 	= 	src
 
 LIBFT_A 	= 	libft.a
-SRC_SRC 	= 	sort_small.c stack_push.c 	\
+SRC_SRC 	= 	sort_small.c stack_push.c push_swap.c 	\
 				stack_rotate.c stack_swap.c stack_utils.c 	\
 				stack.c sort.c sort_large.c target.c cheapest_move.c
 
@@ -34,8 +34,8 @@ OBJ 		= $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ) $(HEAD) $(SRC) Makefile main.c
-	$(CC) main.c $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
+$(NAME): $(LIBFT) $(OBJ) $(HEAD) $(SRC) Makefile
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(HEAD) Makefile | $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
