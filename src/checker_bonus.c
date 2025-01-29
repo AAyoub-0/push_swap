@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 13:45:23 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/29 16:06:37 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:22:14 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,15 @@ void	listen_cmd(t_stack *a, t_stack *b)
 		else
 			return (free(line), ft_putstr_fd(ERROR, 2));
 		if (is_sorted(a) && b->top == -1)
-		{
-			ft_putendl_fd(OK, 1);
-			return ;
-		}
+			return (free(line), ft_putendl_fd(OK, 1));
 		free(line);
 	}
-	ft_putendl_fd(KO, 1);
+	if (line)
+		free(line);
+	if (!is_sorted(a) || b->top > -1)
+		ft_putendl_fd(KO, 1);
+	else
+		ft_putendl_fd(OK, 1);
 	return ;
 }
 
@@ -86,6 +88,8 @@ int	main(int ac, char **av)
 		return (ft_putstr_fd(ERROR, 2), EXIT_FAILURE);
 	if (!check_doubls(a))
 		return (ft_putstr_fd(ERROR, 2), stack_destroy(a), EXIT_FAILURE);
+	if (is_sorted(a))
+		return (stack_destroy(a), EXIT_SUCCESS);
 	b = stack_create(a->size, 'b');
 	if (!b)
 		return (ft_putstr_fd(ERROR, 2), EXIT_FAILURE);

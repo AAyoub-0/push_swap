@@ -6,7 +6,7 @@
 #    By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/23 17:00:10 by aayoub            #+#    #+#              #
-#    Updated: 2025/01/29 16:07:27 by aboumall         ###   ########.fr        #
+#    Updated: 2025/01/29 16:15:27 by aboumall         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,4 +64,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus
