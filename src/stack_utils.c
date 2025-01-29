@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:14:51 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/28 18:12:01 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/29 11:25:45 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,11 +105,15 @@ char	*join_args(int ac, char **av)
 	i = 1;
 	str = ft_strdup(av[i]);
 	if (!str)
-		exit(1);
+		exit(EXIT_FAILURE);
 	while (++i < ac)
 	{
 		str = ft_strjoin_free(str, " ");
+		if (!str)
+			return (NULL);
 		str = ft_strjoin_free(str, av[i]);
+		if (!str)
+			return (NULL);
 	}
 	return (str);
 }

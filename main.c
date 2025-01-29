@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:34:53 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/28 17:47:05 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/29 11:46:13 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,18 @@ int	main(int ac, char **av)
 	if (ac < 2)
 		exit(1);
 	str = join_args(ac, av);
+	if (!str)
+		return (ft_putstr_fd("Error\n", 2), EXIT_FAILURE);
 	if (!is_valid_args(str))
-	{
-		ft_printf("Error\n");
-		exit(1);
-	}
+		return (ft_putstr_fd("Error\n", 2), free(str), EXIT_FAILURE);
 	a = stack_create_from_str(str, 'a');
+	if (!a)
+		return (ft_putstr_fd("Error\n", 2), EXIT_FAILURE);
 	if (!check_doubls(a))
-	{
-		ft_printf("Error\n");
-		exit(stack_destroy(a));
-	}
+		return (ft_putstr_fd("Error\n", 2), stack_destroy(a), EXIT_FAILURE);
 	b = stack_create(a->size, 'b');
+	if (!b)
+		return (ft_putstr_fd("Error\n", 2), EXIT_FAILURE);
 	sort(a, b);
 	stack_destroy(a);
 	stack_destroy(b);
