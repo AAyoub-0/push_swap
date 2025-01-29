@@ -6,7 +6,7 @@
 /*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/13 16:29:28 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/28 17:47:33 by aboumall         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:48:40 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	put_target_on_top(t_stack *a, t_stack *b, int c_i, int t_i)
 
 	len_a = a->top + 1;
 	len_b = b->top + 1;
-	while (c_i < len_a / 2 && c_i > 0 && t_i < len_b / 2 && t_i > 0)
+	while ((c_i < len_a / 2) && c_i > 0 && t_i < len_b / 2 && t_i > 0)
 	{
 		stack_rotate_both(a, b, true);
 		c_i--;

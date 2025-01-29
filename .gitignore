@@ -20,5 +20,5 @@ tester/
 *~
 
 push_swap
+checker
 *.ini
-*checker*

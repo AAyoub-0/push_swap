@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ayoub <ayoub@student.42.fr>                +#+  +:+       +#+        */
+/*   By: aboumall <aboumall@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/20 16:13:55 by aboumall          #+#    #+#             */
-/*   Updated: 2025/01/26 21:44:48 by ayoub            ###   ########.fr       */
+/*   Updated: 2025/01/29 15:42:10 by aboumall         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,23 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+# define QUIT "q"
+# define OK   "OK"
+# define KO   "KO"
+# define ERROR "Error\n"
+
+# define PA   "pa"
+# define PB   "pb"
+# define SS   "ss"
+# define SA   "sa"
+# define SB   "sb"
+# define RR   "rr"
+# define RA   "ra"
+# define RB   "rb"
+# define RRR  "rrr"
+# define RRA  "rra"
+# define RRB  "rrb"
+
 typedef struct s_stack
 {
 	char	*name;
@@ -27,12 +44,6 @@ typedef struct s_stack
 	int		top;
 	int		size;
 }			t_stack;
-
-typedef enum e_bool
-{
-	false = 0,
-	true = 1
-}			t_bool;
 
 t_stack		*stack_create(int size, char name);
 void		stack_pop(t_stack *stack);
